@@ -9,3 +9,5 @@ target
 gwt-unitCache
 www-test
 test-classes/
+.idea/workspace.xml
+.idea/tasks.xml
