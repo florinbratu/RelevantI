@@ -1,0 +1,13 @@
+/build
+/classes
+*.class
+*~
+*/web-app/gwt
+*/web-app/WEB-INF/classes
+target
+.gwt
+gwt-unitCache
+www-test
+test-classes/
+.idea/workspace.xml
+.idea/tasks.xml
