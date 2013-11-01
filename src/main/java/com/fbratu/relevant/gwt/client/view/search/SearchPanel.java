@@ -4,9 +4,7 @@ import com.google.gwt.event.dom.client.BlurEvent;
 import com.google.gwt.event.dom.client.BlurHandler;
 import com.google.gwt.event.dom.client.FocusEvent;
 import com.google.gwt.event.dom.client.FocusHandler;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.*;
 
 /**
  * author: Florin
@@ -14,6 +12,8 @@ import com.google.gwt.user.client.ui.TextBox;
 public class SearchPanel {
 
     private static final String SEARCH_LOCATION_HINT = "Location";
+
+    private static final String SEARCH_BUTTON_IMG_PATH = "res/search.png";
 
     public SearchPanel()  {
     }
@@ -27,9 +27,11 @@ public class SearchPanel {
     }
 
     private void initSearchButton() {
-        // TODO Search image button
-        final Button searchButton = new Button();
-        // We can add style names to widgets
+        // Search image button
+        Image searchImg = new Image(SEARCH_BUTTON_IMG_PATH);
+        // temporary hack, until a better desing...
+        searchImg.setPixelSize(32,32);
+        final PushButton searchButton = new PushButton(searchImg);
         searchButton.addStyleName("searchButton");
         RootPanel.get("searchButtonContainer").add(searchButton);
     }
