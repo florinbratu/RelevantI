@@ -10,9 +10,19 @@ h1 {
   text-align: center;
 }
 
-.sendButton {
+.searchButton {
   display: block;
   font-size: 16pt;
+}
+
+.searchLocationFocused {
+  color: #000000;
+  font-style:normal;
+}
+
+.searchLocationHint {
+  color: #808080;
+  font-style:italic;
 }
 
 /** Most GWT widgets already have a style name defined */
