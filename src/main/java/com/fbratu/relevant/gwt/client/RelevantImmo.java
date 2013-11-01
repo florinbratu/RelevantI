@@ -36,7 +36,7 @@ public class RelevantImmo implements EntryPoint {
   private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
 
   public void onModuleLoad() {
-      SearchPanel searchPanel = new SearchPanel("Where do you want to live?");
+      SearchPanel searchPanel = new SearchPanel();
       searchPanel.init();
   }
 

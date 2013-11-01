@@ -13,10 +13,9 @@ import com.google.gwt.user.client.ui.TextBox;
  */
 public class SearchPanel {
 
-    private final String searchLocationHint;
+    private static final String SEARCH_LOCATION_HINT = "Location";
 
-    public SearchPanel(String searchLocationHint)  {
-        this.searchLocationHint = searchLocationHint;
+    public SearchPanel()  {
     }
 
     /**
@@ -37,7 +36,7 @@ public class SearchPanel {
 
     private void initSearchLocationField() {
         final TextBox nameField = new TextBox();
-        nameField.setText(searchLocationHint);
+        nameField.setText(SEARCH_LOCATION_HINT);
         nameField.addStyleName("searchLocationHint");
         // blur handler -> set default hint
         nameField.addBlurHandler(new BlurHandler() {
@@ -45,7 +44,7 @@ public class SearchPanel {
             public void onBlur(BlurEvent blurEvent) {
                 String currentValue = nameField.getText();
                 if("".equals(currentValue)) {
-                   nameField.setText(searchLocationHint);
+                   nameField.setText(SEARCH_LOCATION_HINT);
                    // greyed style
                    nameField.removeStyleName("searchLocationFocused");
                    nameField.addStyleName("searchLocationHint");
@@ -57,7 +56,7 @@ public class SearchPanel {
             @Override
             public void onFocus(FocusEvent focusEvent) {
                 String currentValue = nameField.getText();
-                if(searchLocationHint.equals(currentValue)) {
+                if(SEARCH_LOCATION_HINT.equals(currentValue)) {
                     nameField.setValue("");
                     // focused style
                     nameField.addStyleName("searchLocationFocused");
