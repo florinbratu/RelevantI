@@ -1,5 +1,6 @@
 package com.fbratu.relevant.gwt.client;
 
+import com.fbratu.relevant.gwt.client.presenter.Presenter;
 import com.fbratu.relevant.gwt.client.view.search.SearchPanel;
 import com.fbratu.relevant.gwt.shared.FieldVerifier;
 import com.google.gwt.core.client.EntryPoint;
@@ -38,6 +39,8 @@ public class RelevantImmo implements EntryPoint {
   public void onModuleLoad() {
       SearchPanel searchPanel = new SearchPanel();
       searchPanel.init();
+      // init Presenter
+      Presenter presenter = new Presenter(searchPanel);
   }
 
   /**

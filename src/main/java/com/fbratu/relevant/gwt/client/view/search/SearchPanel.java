@@ -1,9 +1,9 @@
 package com.fbratu.relevant.gwt.client.view.search;
 
-import com.google.gwt.event.dom.client.BlurEvent;
-import com.google.gwt.event.dom.client.BlurHandler;
-import com.google.gwt.event.dom.client.FocusEvent;
-import com.google.gwt.event.dom.client.FocusHandler;
+import com.fbratu.relevant.gwt.client.listener.ISearchListener;
+import com.fbratu.relevant.gwt.client.presenter.Presenter;
+import com.fbratu.relevant.gwt.shared.FieldVerifier;
+import com.google.gwt.event.dom.client.*;
 import com.google.gwt.user.client.ui.*;
 
 /**
@@ -15,6 +15,15 @@ public class SearchPanel {
 
     private static final String SEARCH_BUTTON_IMG_PATH = "res/search.png";
 
+    // single listener is enough for us
+    private ISearchListener searchListener;
+
+    // UI component storing the search location field
+    private TextBox searchLocationField;
+
+    // Error UI component - triggered if invalid search parameters
+    private Label errorLabel;
+
     public SearchPanel()  {
     }
 
@@ -24,6 +33,12 @@ public class SearchPanel {
     public void init() {
         initSearchButton();
         initSearchLocationField();
+        initErrorLabel();
+    }
+
+    private void initErrorLabel() {
+        errorLabel = new Label();
+        RootPanel.get("errorLabelContainer").add(errorLabel);
     }
 
     private void initSearchButton() {
@@ -34,6 +49,12 @@ public class SearchPanel {
         final PushButton searchButton = new PushButton(searchImg);
         searchButton.addStyleName("searchButton");
         RootPanel.get("searchButtonContainer").add(searchButton);
+        searchButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent clickEvent) {
+                triggerSearch();
+            }
+        });
     }
 
     private void initSearchLocationField() {
@@ -67,5 +88,31 @@ public class SearchPanel {
             }
         });
         RootPanel.get("searchLocationFieldContainer").add(locationField);
+        // need to access it when triggering search
+        searchLocationField = locationField;
+        // handler to trigger search on ENTER
+        locationField.addKeyUpHandler(new KeyUpHandler() {
+            @Override
+            public void onKeyUp(KeyUpEvent keyUpEvent) {
+                if (keyUpEvent.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+                    triggerSearch();
+                }
+            }
+        });
+    }
+
+    private void triggerSearch() {
+        // input validation
+        errorLabel.setText("");
+        String location = searchLocationField.getText();
+        if (!FieldVerifier.isValidName(location)) {
+            errorLabel.setText("Please enter a valid location");
+            return;
+        }
+        searchListener.notifySearch(location);
+    }
+
+    public void registerSearchListener(ISearchListener searchListener) {
+        this.searchListener = searchListener;
     }
 }
