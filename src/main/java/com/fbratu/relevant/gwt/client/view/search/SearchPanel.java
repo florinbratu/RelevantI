@@ -37,35 +37,35 @@ public class SearchPanel {
     }
 
     private void initSearchLocationField() {
-        final TextBox nameField = new TextBox();
-        nameField.setText(SEARCH_LOCATION_HINT);
-        nameField.addStyleName("searchLocationHint");
+        final TextBox locationField = new TextBox();
+        locationField.setText(SEARCH_LOCATION_HINT);
+        locationField.addStyleName("searchLocationHint");
         // blur handler -> set default hint
-        nameField.addBlurHandler(new BlurHandler() {
+        locationField.addBlurHandler(new BlurHandler() {
             @Override
             public void onBlur(BlurEvent blurEvent) {
-                String currentValue = nameField.getText();
+                String currentValue = locationField.getText();
                 if("".equals(currentValue)) {
-                   nameField.setText(SEARCH_LOCATION_HINT);
+                   locationField.setText(SEARCH_LOCATION_HINT);
                    // greyed style
-                   nameField.removeStyleName("searchLocationFocused");
-                   nameField.addStyleName("searchLocationHint");
+                   locationField.removeStyleName("searchLocationFocused");
+                   locationField.addStyleName("searchLocationHint");
                 }
             }
         });
         // focus handler: if hint mode => switch  to focused mode
-        nameField.addFocusHandler(new FocusHandler() {
+        locationField.addFocusHandler(new FocusHandler() {
             @Override
             public void onFocus(FocusEvent focusEvent) {
-                String currentValue = nameField.getText();
+                String currentValue = locationField.getText();
                 if(SEARCH_LOCATION_HINT.equals(currentValue)) {
-                    nameField.setValue("");
+                    locationField.setValue("");
                     // focused style
-                    nameField.addStyleName("searchLocationFocused");
-                    nameField.removeStyleName("searchLocationHint");
+                    locationField.addStyleName("searchLocationFocused");
+                    locationField.removeStyleName("searchLocationHint");
                 }
             }
         });
-        RootPanel.get("searchLocationFieldContainer").add(nameField);
+        RootPanel.get("searchLocationFieldContainer").add(locationField);
     }
 }
