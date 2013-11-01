@@ -1,4 +1,4 @@
-package com.fbratu.relevant.client;
+package com.fbratu.relevant.gwt.client;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 

@@ -7,9 +7,9 @@
   "http://google-web-toolkit.googlecode.com/svn/tags/2.5.1/distro-source/core/src/gwt-module.dtd">
 <module>
   <!-- Inherit our applications main module.                      -->
-  <inherits name='com.fbratu.relevant.gwt'/>
+  <inherits name='com.fbratu.relevant.gwt.RelevantImmo'/>
 
   <!-- Specify the path to any remote services.                   -->
-  <servlet path="/gwt/greet" class="com.fbratu.relevant.server.GreetingServiceImpl" />
+  <servlet path="/relevantimmo/greet" class="com.fbratu.relevant.gwt.server.GreetingServiceImpl" />
 
 </module>

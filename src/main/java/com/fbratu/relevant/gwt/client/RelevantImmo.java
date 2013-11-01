@@ -1,6 +1,6 @@
-package com.fbratu.relevant.client;
+package com.fbratu.relevant.gwt.client;
 
-import com.fbratu.relevant.shared.FieldVerifier;
+import com.fbratu.relevant.gwt.shared.FieldVerifier;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -20,7 +20,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
-public class gwt implements EntryPoint {
+public class RelevantImmo implements EntryPoint {
   /**
    * The message displayed to the user when the server cannot be reached or
    * returns an error.

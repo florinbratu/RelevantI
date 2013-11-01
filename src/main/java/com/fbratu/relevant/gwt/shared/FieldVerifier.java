@@ -1,4 +1,4 @@
-package com.fbratu.relevant.shared;
+package com.fbratu.relevant.gwt.shared;
 
 /**
  * <p>

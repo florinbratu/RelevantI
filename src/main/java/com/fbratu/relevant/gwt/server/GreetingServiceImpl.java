@@ -1,7 +1,7 @@
-package com.fbratu.relevant.server;
+package com.fbratu.relevant.gwt.server;
 
-import com.fbratu.relevant.client.GreetingService;
-import com.fbratu.relevant.shared.FieldVerifier;
+import com.fbratu.relevant.gwt.client.GreetingService;
+import com.fbratu.relevant.gwt.shared.FieldVerifier;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 /**

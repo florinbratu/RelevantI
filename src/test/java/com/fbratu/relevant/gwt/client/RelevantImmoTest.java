@@ -1,6 +1,6 @@
-package com.fbratu.relevant.client;
+package com.fbratu.relevant.gwt.client;
 
-import com.fbratu.relevant.shared.FieldVerifier;
+import com.fbratu.relevant.gwt.shared.FieldVerifier;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.junit.client.GWTTestCase;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -9,13 +9,13 @@ import com.google.gwt.user.client.rpc.ServiceDefTarget;
 /**
  * GWT JUnit tests must extend GWTTestCase.
  */
-public class gwtTest extends GWTTestCase {
+public class RelevantImmoTest extends GWTTestCase {
 
   /**
    * Must refer to a valid module that sources this class.
    */
   public String getModuleName() {
-    return "com.fbratu.relevant.gwtJUnit";
+    return "com.fbratu.relevant.gwt.RelevantImmoJUnit";
   }
 
   /**
@@ -38,7 +38,7 @@ public class gwtTest extends GWTTestCase {
     // Create the service that we will test.
     GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
     ServiceDefTarget target = (ServiceDefTarget) greetingService;
-    target.setServiceEntryPoint(GWT.getModuleBaseURL() + "gwt/greet");
+    target.setServiceEntryPoint(GWT.getModuleBaseURL() + "relevantimmo/greet");
 
     // Since RPC calls are asynchronous, we will need to wait for a response
     // after this test method returns. This line tells the test runner to wait

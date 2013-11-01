@@ -8,17 +8,17 @@
   <!-- Servlets -->
   <servlet>
     <servlet-name>greetServlet</servlet-name>
-    <servlet-class>com.fbratu.relevant.server.GreetingServiceImpl</servlet-class>
+    <servlet-class>com.fbratu.relevant.gwt.server.GreetingServiceImpl</servlet-class>
   </servlet>
   
   <servlet-mapping>
     <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/gwt/greet</url-pattern>
+    <url-pattern>/relevantimmo/greet</url-pattern>
   </servlet-mapping>
   
   <!-- Default page to serve -->
   <welcome-file-list>
-    <welcome-file>gwt.html</welcome-file>
+    <welcome-file>RelevantImmo.html</welcome-file>
   </welcome-file-list>
 
 </web-app>
