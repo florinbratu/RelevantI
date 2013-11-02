@@ -8,7 +8,8 @@ package com.fbratu.relevant.gwt.client.listener;
 public interface ISearchListener {
     /*
     * Triggered when user clicks the Search button
+    * or presses Enter on the search location field
     * to look for real estate announcements
     */
-    public void notifySearch(String searchLocation);
+    void notifySearch(String searchLocation);
 }

@@ -38,9 +38,10 @@ public class RelevantImmo implements EntryPoint {
 
   public void onModuleLoad() {
       SearchPanel searchPanel = new SearchPanel();
-      searchPanel.init();
+      searchPanel.create();
       // init Presenter
       Presenter presenter = new Presenter(searchPanel);
+      searchPanel.registerSearchListener(presenter);
   }
 
   /**

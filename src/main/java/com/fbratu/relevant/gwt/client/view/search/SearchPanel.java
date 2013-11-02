@@ -1,7 +1,7 @@
 package com.fbratu.relevant.gwt.client.view.search;
 
 import com.fbratu.relevant.gwt.client.listener.ISearchListener;
-import com.fbratu.relevant.gwt.client.presenter.Presenter;
+import com.fbratu.relevant.gwt.client.view.states.ViewState;
 import com.fbratu.relevant.gwt.shared.FieldVerifier;
 import com.google.gwt.event.dom.client.*;
 import com.google.gwt.user.client.ui.*;
@@ -9,7 +9,7 @@ import com.google.gwt.user.client.ui.*;
 /**
  * author: Florin
  */
-public class SearchPanel {
+public class SearchPanel implements ViewState {
 
     private static final String SEARCH_LOCATION_HINT = "Location";
 
@@ -17,6 +17,9 @@ public class SearchPanel {
 
     // single listener is enough for us
     private ISearchListener searchListener;
+
+    // the search button
+    private PushButton searchButton;
 
     // UI component storing the search location field
     private TextBox searchLocationField;
@@ -27,26 +30,23 @@ public class SearchPanel {
     public SearchPanel()  {
     }
 
-    /**
-     * Load UI components
-     */
-    public void init() {
-        initSearchButton();
-        initSearchLocationField();
-        initErrorLabel();
+    public void create() {
+        createSearchButton();
+        createSearchLocationField();
+        createErrorLabel();
     }
 
-    private void initErrorLabel() {
+    private void createErrorLabel() {
         errorLabel = new Label();
         RootPanel.get("errorLabelContainer").add(errorLabel);
     }
 
-    private void initSearchButton() {
+    private void createSearchButton() {
         // Search image button
         Image searchImg = new Image(SEARCH_BUTTON_IMG_PATH);
         // temporary hack, until a better desing...
         searchImg.setPixelSize(32,32);
-        final PushButton searchButton = new PushButton(searchImg);
+        searchButton = new PushButton(searchImg);
         searchButton.addStyleName("searchButton");
         RootPanel.get("searchButtonContainer").add(searchButton);
         searchButton.addClickHandler(new ClickHandler() {
@@ -57,7 +57,7 @@ public class SearchPanel {
         });
     }
 
-    private void initSearchLocationField() {
+    private void createSearchLocationField() {
         final TextBox locationField = new TextBox();
         locationField.setText(SEARCH_LOCATION_HINT);
         locationField.addStyleName("searchLocationHint");
@@ -110,6 +110,19 @@ public class SearchPanel {
             return;
         }
         searchListener.notifySearch(location);
+    }
+
+    @Override
+    public void invalidate() {
+        searchButton.setEnabled(false);
+        searchLocationField.setEnabled(false);
+    }
+
+    @Override
+    public void activate() {
+        searchButton.setEnabled(true);
+        searchLocationField.setEnabled(true);
+        searchLocationField.setFocus(true);
     }
 
     public void registerSearchListener(ISearchListener searchListener) {

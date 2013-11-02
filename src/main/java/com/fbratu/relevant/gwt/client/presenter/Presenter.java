@@ -1,37 +1,62 @@
 package com.fbratu.relevant.gwt.client.presenter;
 
 import com.fbratu.relevant.gwt.client.listener.ISearchListener;
-import com.fbratu.relevant.gwt.client.view.search.SearchPanel;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.PopupPanel;
+import com.fbratu.relevant.gwt.client.listener.ISearchResultsListener;
+import com.fbratu.relevant.gwt.client.view.states.ViewState;
+import com.fbratu.relevant.gwt.client.view.results.SearchResultsPanel;
 
 /**
  * The Presenter, as per the MVP pattern.
- * TODO implement as State pattern
+ * It is implemented as State pattern.
+ * For each events coming from the View,
+ * the view state switches accordingly, and if need be
+ * some processing is performed
+ *
+ * The view state may switch to a new view, or to an already-existing one
+ * In the latter case, resources are recycled(especially when switching back to
+ * already-seen views)
  *
  * Author: Florin
  */
-public class Presenter implements ISearchListener{
+public class Presenter implements ISearchListener, ISearchResultsListener{
 
-    private final SearchPanel searchPanel;
+    private ViewState state;
 
-    // for the time being: search results in a crappy Popup
-    private final PopupPanel searchResultsPanel;
+    public Presenter(ViewState initialState) {
+        state = initialState;
+        state.activate();
+    }
 
-    private final Label resultsLabel;
+    public ViewState getState() {
+        return state;
+    }
 
-    public Presenter(SearchPanel searchPanel) {
-        this.searchPanel = searchPanel;
-        this.searchPanel.registerSearchListener(this);
-        this.searchResultsPanel = new PopupPanel(true);
-        this.resultsLabel = new Label();
-        searchResultsPanel.setWidget(resultsLabel);
-        searchResultsPanel.center();
+    public void setState(ViewState state) {
+        this.state = state;
     }
 
     public void notifySearch(String searchLocation) {
-        // lame version. In the future at least call remote service!
-        resultsLabel.setText(searchLocation);
-        searchResultsPanel.show();
+        // get results for location
+        // TODO call remote service!
+        String searchResults = searchLocation;
+        // create brand-new state
+        SearchResultsPanel resultsPanel = new SearchResultsPanel(searchResults);
+        resultsPanel.create();
+        resultsPanel.registerListener(this);
+        // state switch: Search -> Search results
+        // disable old state
+        state.invalidate();
+        // set new state
+        resultsPanel.setSearchPanel(state);
+        state = resultsPanel;
+        state.activate();
+    }
+
+    @Override
+    public void notifySearchResultsClosed(ViewState searchPage) {
+        // state switch: Search Results -> Search page
+        state.invalidate();
+        state = searchPage;
+        state.activate();
     }
 }
