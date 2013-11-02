@@ -2,6 +2,7 @@ package com.fbratu.relevant.gwt.client.presenter;
 
 import com.fbratu.relevant.gwt.client.listener.ISearchListener;
 import com.fbratu.relevant.gwt.client.listener.ISearchResultsListener;
+import com.fbratu.relevant.gwt.client.view.ErrorView;
 import com.fbratu.relevant.gwt.client.view.LoadingView;
 import com.fbratu.relevant.gwt.client.view.states.ViewState;
 import com.fbratu.relevant.gwt.client.view.results.SearchResultsPanel;
@@ -33,6 +34,9 @@ public class Presenter implements ISearchListener, ISearchResultsListener{
     // the Loading screen
     private final LoadingView loadingWidget;
 
+    // centralized error handling => ErrorView
+    private final ErrorView errorView;
+
     // the view state aka what are we displaying
     private ViewState state;
 
@@ -43,6 +47,8 @@ public class Presenter implements ISearchListener, ISearchResultsListener{
         lookupService = GWT.create(ImmoLookupService.class);
         // create the loading view
         loadingWidget = new LoadingView();
+        // create the error handling object
+        errorView = new ErrorView();
     }
 
     public ViewState getState() {
@@ -63,7 +69,7 @@ public class Presenter implements ISearchListener, ISearchResultsListener{
             @Override
             public void onFailure(Throwable throwable) {
                 loadingWidget.hide();
-                // TODO uniform error handling
+                errorView.show(throwable);
             }
 
             @Override
