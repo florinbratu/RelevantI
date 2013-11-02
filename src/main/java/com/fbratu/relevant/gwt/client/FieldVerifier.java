@@ -1,4 +1,4 @@
-package com.fbratu.relevant.gwt.shared;
+package com.fbratu.relevant.gwt.client;
 
 /**
  * Input validation

@@ -10,6 +10,6 @@
   <inherits name='com.fbratu.relevant.gwt.RelevantImmo'/>
 
   <!-- Specify the path to any remote services.                   -->
-  <servlet path="/relevantimmo/greet" class="com.fbratu.relevant.gwt.server.GreetingServiceImpl" />
+  <servlet path="/relevantimmo/immoLookup" class="com.fbratu.relevant.gwt.server.ImmoLookupServiceImpl" />
 
 </module>

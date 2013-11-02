@@ -2,7 +2,7 @@ package com.fbratu.relevant.gwt.client.view.search;
 
 import com.fbratu.relevant.gwt.client.listener.ISearchListener;
 import com.fbratu.relevant.gwt.client.view.states.ViewState;
-import com.fbratu.relevant.gwt.shared.FieldVerifier;
+import com.fbratu.relevant.gwt.client.FieldVerifier;
 import com.google.gwt.event.dom.client.*;
 import com.google.gwt.user.client.ui.*;
 
