@@ -5,20 +5,25 @@
          version="2.5"
          xmlns="http://java.sun.com/xml/ns/javaee">
 
-  <!-- Servlets -->
-  <servlet>
-    <servlet-name>lookupServlet</servlet-name>
-    <servlet-class>com.fbratu.relevant.gwt.server.ImmoLookupServiceImpl</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>lookupServlet</servlet-name>
-    <url-pattern>/relevantimmo/immoLookup</url-pattern>
-  </servlet-mapping>
+    <!-- Spring plumbing -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <!-- SpringGwt remote service servlet -->
+    <servlet>
+        <servlet-name>spring4GwtServlet</servlet-name>
+        <servlet-class>org.spring4gwt.server.SpringGwtRemoteServiceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>spring4GwtServlet</servlet-name>
+        <url-pattern>/relevantimmo/springGwtServices/*</url-pattern>
+    </servlet-mapping>
   
   <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>RelevantImmo.html</welcome-file>
   </welcome-file-list>
+
+
 
 </web-app>

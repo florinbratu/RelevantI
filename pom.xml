@@ -16,6 +16,7 @@
     <!-- GWT needs at least java 1.6 -->
     <maven.compiler.source>1.6</maven.compiler.source>
     <maven.compiler.target>1.6</maven.compiler.target>
+    <springframeworkVersion>3.1.2.RELEASE</springframeworkVersion>
   </properties>
 
   <dependencies>
@@ -56,6 +57,40 @@
       <classifier>sources</classifier>
       <scope>provided</scope>
     </dependency>
+      <!-- <SpringDependencies> -->
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-core</artifactId>
+          <version>${springframeworkVersion}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-beans</artifactId>
+          <version>${springframeworkVersion}</version>
+      </dependency>
+          <dependency>
+              <groupId>org.springframework</groupId>
+              <artifactId>spring-context</artifactId>
+              <version>${springframeworkVersion}</version>
+          </dependency>
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-web</artifactId>
+          <version>${springframeworkVersion}</version>
+      </dependency>
+      <!-- </SpringDependencies> -->
+      <dependency>
+          <groupId>org.spring4gwt</groupId>
+          <artifactId>spring4gwt</artifactId>
+          <version>0.0.1</version>
+          <scope>system</scope>
+          <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/spring4gwt-0.0.1.jar</systemPath>
+      </dependency>
+      <dependency>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+          <version>1.2.17</version>
+      </dependency>
   </dependencies>
   
   <build>
