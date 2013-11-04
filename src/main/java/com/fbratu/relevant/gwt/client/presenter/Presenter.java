@@ -6,10 +6,13 @@ import com.fbratu.relevant.gwt.client.view.ErrorView;
 import com.fbratu.relevant.gwt.client.view.LoadingView;
 import com.fbratu.relevant.gwt.client.view.states.ViewState;
 import com.fbratu.relevant.gwt.client.view.results.SearchResultsPanel;
+import com.fbratu.relevant.gwt.shared.dto.SearchResult;
 import com.fbratu.relevant.gwt.shared.ImmoLookupService;
 import com.fbratu.relevant.gwt.shared.ImmoLookupServiceAsync;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+
+import java.util.List;
 
 /**
  * The Presenter, as per the MVP pattern.
@@ -64,7 +67,7 @@ public class Presenter implements ISearchListener, ISearchResultsListener{
         // show loading widget
         loadingWidget.center();
         loadingWidget.show();
-        lookupService.searchOffers(searchLocation, new AsyncCallback<String>() {
+        lookupService.searchOffers(searchLocation, new AsyncCallback<List<SearchResult>>() {
 
             @Override
             public void onFailure(Throwable throwable) {
@@ -73,16 +76,17 @@ public class Presenter implements ISearchListener, ISearchResultsListener{
             }
 
             @Override
-            public void onSuccess(String results) {
+            public void onSuccess(List<SearchResult> results) {
                 loadingWidget.hide();
                 displaySearchResults(results);
             }
         });
     }
 
-    private void displaySearchResults(String searchResults) {
+    private void displaySearchResults(List<SearchResult> results) {
+        // TODO re-create SearchResults pannel
         // create brand-new state
-        SearchResultsPanel resultsPanel = new SearchResultsPanel(searchResults);
+        SearchResultsPanel resultsPanel = new SearchResultsPanel(results.get(0).toString());
         resultsPanel.create();
         resultsPanel.registerListener(this);
         // state switch: Search -> Search results

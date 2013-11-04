@@ -1,11 +1,14 @@
 package com.fbratu.relevant.gwt.client;
 
+import com.fbratu.relevant.gwt.shared.dto.SearchResult;
 import com.fbratu.relevant.gwt.shared.ImmoLookupService;
 import com.fbratu.relevant.gwt.shared.ImmoLookupServiceAsync;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.junit.client.GWTTestCase;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
+
+import java.util.List;
 
 /**
  * GWT JUnit tests must extend GWTTestCase.
@@ -47,16 +50,13 @@ public class RelevantImmoTest extends GWTTestCase {
     delayTestFinish(10000);
 
     // Send a request to the server.
-    greetingService.searchOffers("GWT User", new AsyncCallback<String>() {
+    greetingService.searchOffers("GWT User", new AsyncCallback<List<SearchResult>>() {
       public void onFailure(Throwable caught) {
         // The request resulted in an unexpected error.
         fail("Request failure: " + caught.getMessage());
       }
 
-      public void onSuccess(String result) {
-        // Verify that the response is correct.
-        assertTrue(result.startsWith("Hello, GWT User!"));
-
+      public void onSuccess(List<SearchResult> result) {
         // Now that we have received a response, we need to tell the test runner
         // that the test is complete. You must call finishTest() after an
         // asynchronous test finishes successfully, or the test will time out.
