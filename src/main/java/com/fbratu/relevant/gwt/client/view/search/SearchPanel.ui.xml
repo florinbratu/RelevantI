@@ -1,0 +1,38 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <g:HTMLPanel>
+    <ui:with field='res' type='com.fbratu.relevant.gwt.client.Resources'/>
+
+    <h1>Relevant Real Estate search</h1>
+
+    <table class="center">
+    <tr>
+        <td colspan="2" style="font-weight:bold;">TODO here should be our logo:</td>
+    </tr>
+    <tr>
+        <td id="searchLocationFieldContainer">
+            <g.TextBox ui:field="searchLocationField"
+                       addStyleName="searchLocationHint"
+                       enabled="true"
+                        visible="true">
+                Location
+            </g.TextBox>
+        </td>
+        <td id="searchButtonContainer">
+            <g.Button ui:field="searchButton"
+                     addStyleName="searchButton"
+                     visible="true">Search</g.Button>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" id="errorLabelContainer">
+            <g.Label ui:field="errorLabel"
+                    visible="false">
+            </g.Label>
+        </td>
+    </tr>
+    </table>
+    </g:HTMLPanel>
+
+</ui:UiBinder>

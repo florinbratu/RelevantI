@@ -1,60 +1,55 @@
 package com.fbratu.relevant.gwt.client.view.search;
 
+import com.fbratu.relevant.gwt.client.Resources;
 import com.fbratu.relevant.gwt.client.listener.ISearchListener;
 import com.fbratu.relevant.gwt.client.view.states.ViewState;
 import com.fbratu.relevant.gwt.client.FieldVerifier;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.*;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.*;
 
 /**
  * author: Florin
  */
-public class SearchPanel implements ViewState {
+public class SearchPanel extends Composite implements ViewState {
+
+    @UiTemplate("SearchPanel.ui.xml")
+    interface SearchPanelUiBinder extends UiBinder<Widget, SearchPanel> {
+    }
+    private static SearchPanelUiBinder uiBinder = GWT.create(SearchPanelUiBinder.class);
+
+    @UiField
+    Button searchButton;
+
+    // UI component storing the search location field
+    @UiField
+    TextBox searchLocationField;
+
+    @UiField
+    Label errorLabel;
+
+    @UiField
+    Resources res;
 
     private static final String SEARCH_LOCATION_HINT = "Location";
 
-    private static final String SEARCH_BUTTON_IMG_PATH = "res/search.png";
-
     // single listener is enough for us
     private ISearchListener searchListener;
-
-    // the search button
-    private PushButton searchButton;
-
-    // UI component storing the search location field
-    private TextBox searchLocationField;
-
-    // Error UI component - triggered if invalid search parameters
-    private Label errorLabel;
 
     public SearchPanel()  {
     }
 
     public void create() {
-        createSearchButton();
-        createSearchLocationField();
-        createErrorLabel();
+        initWidget(uiBinder.createAndBindUi(this));
     }
 
-    private void createErrorLabel() {
-        errorLabel = new Label();
-        RootPanel.get("errorLabelContainer").add(errorLabel);
-    }
-
-    private void createSearchButton() {
-        // Search image button
-        Image searchImg = new Image(SEARCH_BUTTON_IMG_PATH);
-        // temporary hack, until a better desing...
-        searchImg.setPixelSize(32,32);
-        searchButton = new PushButton(searchImg);
-        searchButton.addStyleName("searchButton");
-        RootPanel.get("searchButtonContainer").add(searchButton);
-        searchButton.addClickHandler(new ClickHandler() {
-            @Override
-            public void onClick(ClickEvent clickEvent) {
-                triggerSearch();
-            }
-        });
+    @UiHandler("searchButton")
+    public void handleClick(ClickEvent clickEvent) {
+        triggerSearch();
     }
 
     private void createSearchLocationField() {

@@ -16,6 +16,8 @@
   <!-- <inherits name='com.google.gwt.user.theme.standard.Standard'/> -->
   <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
   <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
+    <!-- Inherit the UiBinder module.                               -->
+    <inherits name="com.google.gwt.uibinder.UiBinder"/>
 
   <!-- Other module inherits                                      -->
 
