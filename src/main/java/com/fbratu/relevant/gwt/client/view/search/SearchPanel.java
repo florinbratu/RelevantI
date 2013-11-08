@@ -32,9 +32,6 @@ public class SearchPanel extends Composite implements ViewState {
     @UiField
     Label errorLabel;
 
-    @UiField
-    Resources res;
-
     private static final String SEARCH_LOCATION_HINT = "Location";
 
     // single listener is enough for us

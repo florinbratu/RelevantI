@@ -12,24 +12,24 @@
     </tr>
     <tr>
         <td id="searchLocationFieldContainer">
-            <g.TextBox ui:field="searchLocationField"
-                       addStyleName="searchLocationHint"
+            <g:TextBox ui:field="searchLocationField"
+                       addStyleNames="searchLocationHint"
                        enabled="true"
                         visible="true">
                 Location
-            </g.TextBox>
+            </g:TextBox>
         </td>
         <td id="searchButtonContainer">
-            <g.Button ui:field="searchButton"
-                     addStyleName="searchButton"
-                     visible="true">Search</g.Button>
+            <g:Button ui:field="searchButton"
+                     addStyleNames="searchButton"
+                     visible="true">Search</g:Button>
         </td>
     </tr>
     <tr>
         <td colspan="2" id="errorLabelContainer">
-            <g.Label ui:field="errorLabel"
+            <g:Label ui:field="errorLabel"
                     visible="false">
-            </g.Label>
+            </g:Label>
         </td>
     </tr>
     </table>
