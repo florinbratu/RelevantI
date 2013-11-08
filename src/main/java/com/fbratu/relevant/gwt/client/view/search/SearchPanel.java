@@ -49,48 +49,33 @@ public class SearchPanel extends Composite implements ViewState {
         triggerSearch();
     }
 
-    private void createSearchLocationField() {
-        final TextBox locationField = new TextBox();
-        locationField.setText(SEARCH_LOCATION_HINT);
-        locationField.addStyleName("searchLocationHint");
-        // blur handler -> set default hint
-        locationField.addBlurHandler(new BlurHandler() {
-            @Override
-            public void onBlur(BlurEvent blurEvent) {
-                String currentValue = locationField.getText();
-                if("".equals(currentValue)) {
-                   locationField.setText(SEARCH_LOCATION_HINT);
-                   // greyed style
-                   locationField.removeStyleName("searchLocationFocused");
-                   locationField.addStyleName("searchLocationHint");
-                }
-            }
-        });
-        // focus handler: if hint mode => switch  to focused mode
-        locationField.addFocusHandler(new FocusHandler() {
-            @Override
-            public void onFocus(FocusEvent focusEvent) {
-                String currentValue = locationField.getText();
-                if(SEARCH_LOCATION_HINT.equals(currentValue)) {
-                    locationField.setValue("");
-                    // focused style
-                    locationField.addStyleName("searchLocationFocused");
-                    locationField.removeStyleName("searchLocationHint");
-                }
-            }
-        });
-        RootPanel.get("searchLocationFieldContainer").add(locationField);
-        // need to access it when triggering search
-        searchLocationField = locationField;
-        // handler to trigger search on ENTER
-        locationField.addKeyUpHandler(new KeyUpHandler() {
-            @Override
-            public void onKeyUp(KeyUpEvent keyUpEvent) {
-                if (keyUpEvent.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
-                    triggerSearch();
-                }
-            }
-        });
+    @UiHandler("searchLocationField")
+    public void onFocus(FocusEvent focusEvent) {
+        String currentValue = searchLocationField.getText();
+        if(SEARCH_LOCATION_HINT.equals(currentValue)) {
+            searchLocationField.setValue("");
+            // focused style
+            searchLocationField.addStyleName("searchLocationFocused");
+            searchLocationField.removeStyleName("searchLocationHint");
+        }
+    }
+
+    @UiHandler("searchLocationField")
+    public void onBlur(BlurEvent blurEvent) {
+        String currentValue = searchLocationField.getText();
+        if("".equals(currentValue)) {
+            searchLocationField.setText(SEARCH_LOCATION_HINT);
+            // greyed style
+            searchLocationField.removeStyleName("searchLocationFocused");
+            searchLocationField.addStyleName("searchLocationHint");
+        }
+    }
+
+    @UiHandler("searchLocationField")
+    public void onKeyUp(KeyUpEvent event) {
+        if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+            triggerSearch();
+        }
     }
 
     private void triggerSearch() {
