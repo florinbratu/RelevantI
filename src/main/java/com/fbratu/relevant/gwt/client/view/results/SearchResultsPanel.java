@@ -4,6 +4,7 @@ import com.fbratu.relevant.gwt.client.Resources;
 import com.fbratu.relevant.gwt.client.listener.ISearchResultsListener;
 import com.fbratu.relevant.gwt.shared.dto.SearchResult;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -23,6 +24,9 @@ public class SearchResultsPanel extends Composite {
     interface SearchResultsUiBinder extends UiBinder<Widget, SearchResultsPanel> {}
 
     private SearchResultsUiBinder uiBinder;
+
+    @UiField
+    SpanElement searchCriteria;
 
     @UiField
     VerticalPanel resultsPanel;
@@ -46,6 +50,10 @@ public class SearchResultsPanel extends Composite {
     public void onBack(ClickEvent event) {
         resultsPanel.clear();
         searchResultsListener.notifySearchResultsClosed();
+    }
+
+    public void setSearchCriteria(String searchLocation) {
+        searchCriteria.setInnerText(searchLocation);
     }
 
     public void setResults(List<SearchResult> results) {

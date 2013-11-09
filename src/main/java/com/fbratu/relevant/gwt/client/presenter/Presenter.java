@@ -55,7 +55,7 @@ public class Presenter implements ISearchListener, ISearchResultsListener{
         mainPanel.showInitialPanel();
     }
 
-    public void notifySearch(String searchLocation) {
+    public void notifySearch(final String searchLocation) {
         // get results for location
         // show loading widget
         loadingWidget.center();
@@ -71,13 +71,13 @@ public class Presenter implements ISearchListener, ISearchResultsListener{
             @Override
             public void onSuccess(List<SearchResult> results) {
                 loadingWidget.hide();
-                displaySearchResults(results);
+                displaySearchResults(searchLocation, results);
             }
         });
     }
 
-    private void displaySearchResults(List<SearchResult> results) {
-        mainPanel.showSearchResultsPanel(results);
+    private void displaySearchResults(String searchLocation, List<SearchResult> results) {
+        mainPanel.showSearchResultsPanel(searchLocation, results);
     }
 
     @Override

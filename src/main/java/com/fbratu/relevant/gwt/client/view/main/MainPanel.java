@@ -57,9 +57,11 @@ public class MainPanel extends Composite {
         showSearchPanel();
     }
 
-    public void showSearchResultsPanel(List<SearchResult> results) {
+    public void showSearchResultsPanel(String searchLocation, List<SearchResult> results) {
         // show
         mainPanel.showWidget(SEARCH_RESULTS_PANEL_WIDGET_ID);
+        // set search criteria, for redisplay
+        searchResultsPanel.setSearchCriteria(searchLocation);
         // set results
         searchResultsPanel.setResults(results);
         // register listener

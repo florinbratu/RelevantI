@@ -1,4 +1,11 @@
 /** Global, per-app CSS rules. */
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    color: #777777;
+    margin: 40px 0 70px;
+    text-align: center;
+}
 
 /** Most GWT widgets already have a style name defined */
 .gwt-DialogBox {
