@@ -1,0 +1,18 @@
+.searchButton {
+    display: block;
+    border: none;
+}
+
+.searchLocationFocused {
+    color: #000000;
+    font-style:normal;
+}
+
+.searchLocationHint {
+    color: #808080;
+    font-style:italic;
+}
+
+.errorLabel {
+    color:red;
+}

@@ -1,5 +1,6 @@
 package com.fbratu.relevant.gwt.client;
 
+import com.fbratu.relevant.gwt.client.view.search.SearchPanelCSS;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.ImageResource;
 
@@ -8,6 +9,10 @@ import com.google.gwt.resources.client.ImageResource;
  */
 public interface Resources extends ClientBundle {
 
-    @Source("res/search.png")
-    ImageResource searchButton();
+    @Source("view/search/SearchPanel.css")
+    public abstract SearchPanelCSS style();
+
+//    @Source("res/search.png")
+//    ImageResource searchButton();
+
 }

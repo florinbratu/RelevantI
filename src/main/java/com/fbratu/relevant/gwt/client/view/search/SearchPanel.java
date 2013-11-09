@@ -20,7 +20,7 @@ public class SearchPanel extends Composite implements ViewState {
     @UiTemplate("SearchPanel.ui.xml")
     interface SearchPanelUiBinder extends UiBinder<Widget, SearchPanel> {
     }
-    private static SearchPanelUiBinder uiBinder = GWT.create(SearchPanelUiBinder.class);
+    private SearchPanelUiBinder uiBinder;
 
     @UiField
     Button searchButton;
@@ -32,6 +32,9 @@ public class SearchPanel extends Composite implements ViewState {
     @UiField
     Label errorLabel;
 
+    @UiField(provided = true)
+    Resources res;
+
     private static final String SEARCH_LOCATION_HINT = "Location";
 
     // single listener is enough for us
@@ -41,7 +44,10 @@ public class SearchPanel extends Composite implements ViewState {
     }
 
     public void create() {
+        uiBinder = GWT.create(SearchPanelUiBinder.class);
+        res = GWT.create(Resources.class);
         initWidget(uiBinder.createAndBindUi(this));
+        res.style().ensureInjected();
     }
 
     @UiHandler("searchButton")
@@ -55,8 +61,8 @@ public class SearchPanel extends Composite implements ViewState {
         if(SEARCH_LOCATION_HINT.equals(currentValue)) {
             searchLocationField.setValue("");
             // focused style
-            searchLocationField.addStyleName("searchLocationFocused");
-            searchLocationField.removeStyleName("searchLocationHint");
+            searchLocationField.addStyleName(res.style().searchLocationFocused());
+            searchLocationField.removeStyleName(res.style().searchLocationHint());
         }
     }
 
@@ -66,8 +72,8 @@ public class SearchPanel extends Composite implements ViewState {
         if("".equals(currentValue)) {
             searchLocationField.setText(SEARCH_LOCATION_HINT);
             // greyed style
-            searchLocationField.removeStyleName("searchLocationFocused");
-            searchLocationField.addStyleName("searchLocationHint");
+            searchLocationField.removeStyleName(res.style().searchLocationFocused());
+            searchLocationField.addStyleName(res.style().searchLocationHint());
         }
     }
 

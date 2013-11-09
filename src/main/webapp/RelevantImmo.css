@@ -15,21 +15,6 @@ table.center {
     margin-right:auto;
 }
 
-.searchButton {
-    display: block;
-    border: none;
-}
-
-.searchLocationFocused {
-  color: #000000;
-  font-style:normal;
-}
-
-.searchLocationHint {
-  color: #808080;
-  font-style:italic;
-}
-
 /** Most GWT widgets already have a style name defined */
 .gwt-DialogBox {
   width: 400px;
@@ -41,10 +26,6 @@ table.center {
 
 .serverResponseLabelError {
   color: red;
-}
-
-#errorLabelContainer {
-    color:red;
 }
 
 /** Set ids using widget.getElement().setId("idOfElement") */
