@@ -5,10 +5,12 @@ import com.fbratu.relevant.gwt.client.listener.ISearchResultsListener;
 import com.fbratu.relevant.gwt.client.view.ErrorView;
 import com.fbratu.relevant.gwt.client.view.LoadingView;
 import com.fbratu.relevant.gwt.client.view.main.MainPanel;
+import com.fbratu.relevant.gwt.client.view.main.State;
 import com.fbratu.relevant.gwt.shared.dto.SearchResult;
 import com.fbratu.relevant.gwt.shared.ImmoLookupService;
 import com.fbratu.relevant.gwt.shared.ImmoLookupServiceAsync;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import java.util.List;
@@ -51,6 +53,8 @@ public class Presenter implements ISearchListener, ISearchResultsListener{
     }
 
     public void start() {
+        // register main panel as historical handler
+        History.addValueChangeHandler(mainPanel);
         // display initial panel
         mainPanel.showInitialPanel();
     }
@@ -71,18 +75,20 @@ public class Presenter implements ISearchListener, ISearchResultsListener{
             @Override
             public void onSuccess(List<SearchResult> results) {
                 loadingWidget.hide();
+                // state switch: Search page -> Search Results
                 displaySearchResults(searchLocation, results);
             }
         });
     }
 
     private void displaySearchResults(String searchLocation, List<SearchResult> results) {
+        // show search results
         mainPanel.showSearchResultsPanel(searchLocation, results);
     }
 
     @Override
     public void notifySearchResultsClosed() {
-        // state switch: Search Results -> Search page
+        // show search panel
         mainPanel.showSearchPanel();
     }
 }

@@ -3,12 +3,14 @@ package com.fbratu.relevant.gwt.client.view.search;
 import com.fbratu.relevant.gwt.client.Resources;
 import com.fbratu.relevant.gwt.client.listener.ISearchListener;
 import com.fbratu.relevant.gwt.client.FieldVerifier;
+import com.fbratu.relevant.gwt.client.view.main.State;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.*;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.*;
 
 /**
@@ -88,6 +90,7 @@ public class SearchPanel extends Composite {
             errorLabel.setText("Please enter a valid location");
             return;
         }
+        // state switch
         searchListener.notifySearch(location);
     }
 

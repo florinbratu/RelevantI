@@ -2,6 +2,7 @@ package com.fbratu.relevant.gwt.client.view.results;
 
 import com.fbratu.relevant.gwt.client.Resources;
 import com.fbratu.relevant.gwt.client.listener.ISearchResultsListener;
+import com.fbratu.relevant.gwt.client.view.main.State;
 import com.fbratu.relevant.gwt.shared.dto.SearchResult;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.SpanElement;
@@ -11,6 +12,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 
@@ -49,6 +51,7 @@ public class SearchResultsPanel extends Composite {
     @UiHandler("backButton")
     public void onBack(ClickEvent event) {
         resultsPanel.clear();
+        // state switch: Search Results -> Search page
         searchResultsListener.notifySearchResultsClosed();
     }
 
