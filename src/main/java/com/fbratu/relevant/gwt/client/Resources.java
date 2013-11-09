@@ -12,7 +12,7 @@ public interface Resources extends ClientBundle {
     @Source("view/search/SearchPanel.css")
     public abstract SearchPanelCSS searchStyle();
 
-//    @Source("../../../../../../webapp/res/search.png")
+//    @Source("../webapp/res/search.png")
 //    ImageResource searchButton();
 
 }

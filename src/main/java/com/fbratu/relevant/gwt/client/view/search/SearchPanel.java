@@ -2,7 +2,6 @@ package com.fbratu.relevant.gwt.client.view.search;
 
 import com.fbratu.relevant.gwt.client.Resources;
 import com.fbratu.relevant.gwt.client.listener.ISearchListener;
-import com.fbratu.relevant.gwt.client.view.states.ViewState;
 import com.fbratu.relevant.gwt.client.FieldVerifier;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.*;
@@ -15,7 +14,7 @@ import com.google.gwt.user.client.ui.*;
 /**
  * author: Florin
  */
-public class SearchPanel extends Composite implements ViewState {
+public class SearchPanel extends Composite {
 
     @UiTemplate("SearchPanel.ui.xml")
     interface SearchPanelUiBinder extends UiBinder<Widget, SearchPanel> {
@@ -41,9 +40,6 @@ public class SearchPanel extends Composite implements ViewState {
     private ISearchListener searchListener;
 
     public SearchPanel()  {
-    }
-
-    public void create() {
         uiBinder = GWT.create(SearchPanelUiBinder.class);
         res = GWT.create(Resources.class);
         initWidget(uiBinder.createAndBindUi(this));
@@ -93,19 +89,6 @@ public class SearchPanel extends Composite implements ViewState {
             return;
         }
         searchListener.notifySearch(location);
-    }
-
-    @Override
-    public void invalidate() {
-        searchButton.setEnabled(false);
-        searchLocationField.setEnabled(false);
-    }
-
-    @Override
-    public void activate() {
-        searchButton.setEnabled(true);
-        searchLocationField.setEnabled(true);
-        searchLocationField.setFocus(true);
     }
 
     public void registerSearchListener(ISearchListener searchListener) {

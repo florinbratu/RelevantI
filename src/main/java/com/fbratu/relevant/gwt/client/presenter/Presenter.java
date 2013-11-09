@@ -4,8 +4,7 @@ import com.fbratu.relevant.gwt.client.listener.ISearchListener;
 import com.fbratu.relevant.gwt.client.listener.ISearchResultsListener;
 import com.fbratu.relevant.gwt.client.view.ErrorView;
 import com.fbratu.relevant.gwt.client.view.LoadingView;
-import com.fbratu.relevant.gwt.client.view.states.ViewState;
-import com.fbratu.relevant.gwt.client.view.results.SearchResultsPanel;
+import com.fbratu.relevant.gwt.client.view.main.MainPanel;
 import com.fbratu.relevant.gwt.shared.dto.SearchResult;
 import com.fbratu.relevant.gwt.shared.ImmoLookupService;
 import com.fbratu.relevant.gwt.shared.ImmoLookupServiceAsync;
@@ -21,9 +20,7 @@ import java.util.List;
  * the view state switches accordingly, and if need be
  * some processing is performed
  *
- * The view state may switch to a new view, or to an already-existing one
- * In the latter case, resources are recycled(especially when switching back to
- * already-seen views)
+ * The State is actually stored and handled by the Main Panel
  *
  * Also: the presenter is the only entity interacting with the (mystic) Server side
  *
@@ -40,12 +37,11 @@ public class Presenter implements ISearchListener, ISearchResultsListener{
     // centralized error handling => ErrorView
     private final ErrorView errorView;
 
-    // the view state aka what are we displaying
-    private ViewState state;
+    // the Main Panel
+    private final MainPanel mainPanel;
 
-    public Presenter(ViewState initialState) {
-        state = initialState;
-        state.activate();
+    public Presenter(MainPanel mainPanel) {
+        this.mainPanel = mainPanel;
         // init server side proxy
         lookupService = GWT.create(ImmoLookupService.class);
         // create the loading view
@@ -54,12 +50,9 @@ public class Presenter implements ISearchListener, ISearchResultsListener{
         errorView = new ErrorView();
     }
 
-    public ViewState getState() {
-        return state;
-    }
-
-    public void setState(ViewState state) {
-        this.state = state;
+    public void start() {
+        // display initial panel
+        mainPanel.showInitialPanel();
     }
 
     public void notifySearch(String searchLocation) {
@@ -84,25 +77,12 @@ public class Presenter implements ISearchListener, ISearchResultsListener{
     }
 
     private void displaySearchResults(List<SearchResult> results) {
-        // TODO re-create SearchResults pannel
-        // create brand-new state
-        SearchResultsPanel resultsPanel = new SearchResultsPanel(results.get(0).toString());
-        resultsPanel.create();
-        resultsPanel.registerListener(this);
-        // state switch: Search -> Search results
-        // disable old state
-        state.invalidate();
-        // set new state
-        resultsPanel.setSearchPanel(state);
-        state = resultsPanel;
-        state.activate();
+        mainPanel.showSearchResultsPanel(results);
     }
 
     @Override
-    public void notifySearchResultsClosed(ViewState searchPage) {
+    public void notifySearchResultsClosed() {
         // state switch: Search Results -> Search page
-        state.invalidate();
-        state = searchPage;
-        state.activate();
+        mainPanel.showSearchPanel();
     }
 }
