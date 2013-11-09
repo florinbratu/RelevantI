@@ -34,6 +34,12 @@ public class ImmoLookupServiceImpl extends RemoteServiceServlet implements
                 "http://www.explorimmo.com/annonce-29235757-1.html?xtor=EPR-73"
         );
         ret.add(result);
+        SearchResult result2 = new SearchResult(
+                "Sartrouville 3 pieces",
+                "Sartrouville, blahblahblah!...",
+                "http://www.explorimmo.com/annonce-29235757-1.html?xtor=EPR-73"
+        );
+        ret.add(result2);
        return ret;
 
     }

@@ -20,43 +20,39 @@ import java.util.List;
  */
 public class SearchResultsPanel extends Composite {
 
-    @UiTemplate("SearchResultWidget.ui.xml")
-    interface SearchResultsUiBinder extends UiBinder<Widget, SearchResultsPanel>{}
+    interface SearchResultsUiBinder extends UiBinder<Widget, SearchResultsPanel> {}
 
     private SearchResultsUiBinder uiBinder;
 
     @UiField
-    Anchor resultTitle;
+    VerticalPanel resultsPanel;
 
     @UiField
-    Label resultDescription;
+    Button backButton;
 
     // the Listener
     private ISearchResultsListener searchResultsListener;
 
-    // URL container
-    private final StringBuilder urlPlaceholder;
-
     public SearchResultsPanel() {
         uiBinder = GWT.create(SearchResultsUiBinder.class);
         initWidget(uiBinder.createAndBindUi(this));
-        urlPlaceholder = new StringBuilder();
-    }
-
-    @UiHandler("resultTitle")
-    public void onClick(ClickEvent clickEvent) {
-        Window.Location.replace(urlPlaceholder.toString());
     }
 
     public void registerListener(ISearchResultsListener listener) {
         searchResultsListener = listener;
     }
 
+    @UiHandler("backButton")
+    public void onBack(ClickEvent event) {
+        resultsPanel.clear();
+        searchResultsListener.notifySearchResultsClosed();
+    }
+
     public void setResults(List<SearchResult> results) {
-        SearchResult result = results.get(0);
-        resultTitle.setText(result.getTitle());
-        resultDescription.setText(result.getDescription());
-        urlPlaceholder.setLength(0);
-        urlPlaceholder.append(result.getOriginalAnnounceLink());
+        for(SearchResult result : results) {
+            SearchResultWidget resultWidget = new SearchResultWidget();
+            resultWidget.setResult(result);
+            resultsPanel.add(resultWidget);
+        }
     }
 }
