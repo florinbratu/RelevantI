@@ -10,9 +10,9 @@ import com.google.gwt.resources.client.ImageResource;
 public interface Resources extends ClientBundle {
 
     @Source("view/search/SearchPanel.css")
-    public abstract SearchPanelCSS style();
+    public abstract SearchPanelCSS searchStyle();
 
-//    @Source("res/search.png")
+//    @Source("../../../../../../webapp/res/search.png")
 //    ImageResource searchButton();
 
 }

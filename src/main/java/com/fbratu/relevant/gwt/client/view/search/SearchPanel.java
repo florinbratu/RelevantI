@@ -47,7 +47,7 @@ public class SearchPanel extends Composite implements ViewState {
         uiBinder = GWT.create(SearchPanelUiBinder.class);
         res = GWT.create(Resources.class);
         initWidget(uiBinder.createAndBindUi(this));
-        res.style().ensureInjected();
+        res.searchStyle().ensureInjected();
     }
 
     @UiHandler("searchButton")
@@ -61,8 +61,8 @@ public class SearchPanel extends Composite implements ViewState {
         if(SEARCH_LOCATION_HINT.equals(currentValue)) {
             searchLocationField.setValue("");
             // focused style
-            searchLocationField.addStyleName(res.style().searchLocationFocused());
-            searchLocationField.removeStyleName(res.style().searchLocationHint());
+            searchLocationField.addStyleName(res.searchStyle().searchLocationFocused());
+            searchLocationField.removeStyleName(res.searchStyle().searchLocationHint());
         }
     }
 
@@ -72,8 +72,8 @@ public class SearchPanel extends Composite implements ViewState {
         if("".equals(currentValue)) {
             searchLocationField.setText(SEARCH_LOCATION_HINT);
             // greyed style
-            searchLocationField.removeStyleName(res.style().searchLocationFocused());
-            searchLocationField.addStyleName(res.style().searchLocationHint());
+            searchLocationField.removeStyleName(res.searchStyle().searchLocationFocused());
+            searchLocationField.addStyleName(res.searchStyle().searchLocationHint());
         }
     }
 

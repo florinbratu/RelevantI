@@ -15,7 +15,7 @@
                 <td id="searchLocationFieldContainer">
 
                     <g:TextBox ui:field="searchLocationField"
-                               addStyleNames="{res.style.searchLocationHint}"
+                               addStyleNames="{res.searchStyle.searchLocationHint}"
                                enabled="true"
                                visible="true">
                         Location
@@ -23,7 +23,7 @@
                 </td>
                 <td id="searchButtonContainer">
                     <g:Button ui:field="searchButton"
-                              addStyleNames="{res.style.searchButton}"
+                              addStyleNames="{res.searchStyle.searchButton}"
                               visible="true">Search
                     </g:Button>
                 </td>
@@ -31,7 +31,7 @@
             <tr>
                 <td colspan="2" id="errorLabelContainer">
                     <g:Label ui:field="errorLabel"
-                             addStyleNames="{res.style.errorLabel}"
+                             addStyleNames="{res.searchStyle.errorLabel}"
                              visible="true">
                     </g:Label>
                 </td>
