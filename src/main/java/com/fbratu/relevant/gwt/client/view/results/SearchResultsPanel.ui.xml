@@ -2,9 +2,11 @@
              xmlns:gwt='urn:import:com.google.gwt.user.client.ui'>
     <ui:style src="SearchResultsPanel.css" />
     <gwt:HTMLPanel>
-        <h1>Here are the search results for <span ui:field="searchCriteria" class="{style.searchCriteria}"/></h1>
-        <gwt:VerticalPanel ui:field="resultsPanel">
+        <h1 class="{style.resultsHeader}">Here are the search results for <span ui:field="searchCriteria" class="{style.searchCriteria}"/></h1>
+        <gwt:VerticalPanel ui:field="resultsPanel"
+                           addStyleNames="{style.resultsList} {style.center}">
         </gwt:VerticalPanel>
-        <gwt:Button ui:field="backButton">Back</gwt:Button>
+        <gwt:Button ui:field="backButton"
+                    addStyleNames="{style.backButton} {style.center}">Back</gwt:Button>
     </gwt:HTMLPanel>
 </ui:UiBinder>

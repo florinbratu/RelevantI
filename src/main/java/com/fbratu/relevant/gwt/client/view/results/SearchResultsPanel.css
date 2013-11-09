@@ -1,3 +1,25 @@
 .searchCriteria {
     color: indianred;
 }
+
+h1.resultsHeader {
+    font-size: 2em;
+    font-weight: bold;
+    color: #777777;
+    margin: 40px 0 70px;
+    text-align: center;
+}
+
+.resultsList {
+    margin: 20px 0 40px;
+}
+
+.center {
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.backButton {
+    display: block;
+    border: none;
+}

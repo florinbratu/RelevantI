@@ -1,6 +1,14 @@
-.gwt-Anchor {
+.result {
+     margin: 10px 0
+}
+
+.resultLink {
     text-decoration: underline;
     font-weight: bold;
     cursor: pointer;
     display: block;
+}
+
+.resultDescrption{
+    /* TODO */
 }
