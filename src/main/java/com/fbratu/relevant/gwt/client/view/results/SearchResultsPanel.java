@@ -50,7 +50,6 @@ public class SearchResultsPanel extends Composite {
 
     @UiHandler("backButton")
     public void onBack(ClickEvent event) {
-        resultsPanel.clear();
         // state switch: Search Results -> Search page
         searchResultsListener.notifySearchResultsClosed();
     }
@@ -60,6 +59,9 @@ public class SearchResultsPanel extends Composite {
     }
 
     public void setResults(List<SearchResult> results) {
+        // clear previous results - if any
+        resultsPanel.clear();
+        // load up new results
         for(SearchResult result : results) {
             SearchResultWidget resultWidget = new SearchResultWidget();
             resultWidget.setResult(result);

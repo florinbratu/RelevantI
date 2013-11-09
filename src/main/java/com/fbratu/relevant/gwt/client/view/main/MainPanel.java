@@ -106,6 +106,10 @@ public class MainPanel extends Composite implements ValueChangeHandler<String> {
     @Override
     public void onValueChange(ValueChangeEvent<String> event) {
         String historicalInfo = event.getValue();
+        showFromHistory(historicalInfo);
+    }
+
+    public void showFromHistory(String historicalInfo) {
         String[] tokens = historicalInfo.split(State.HISTORY_SEPARATOR);
         String oldStateName = tokens[0];
         State oldState = State.getByName(oldStateName);
@@ -116,8 +120,6 @@ public class MainPanel extends Composite implements ValueChangeHandler<String> {
             case SEARCH_RESULTS:
                 // location encoded in history token
                 String location = tokens[1];
-                // HACK clear prev search result entries
-                searchResultsPanel.onBack(null);
                 // re-run search query. not optimal but good enough for now
                 presenter.notifySearch(location);
                 break;

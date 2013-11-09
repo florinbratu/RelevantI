@@ -41,7 +41,7 @@ public class SearchResultWidget extends Composite{
 
     @UiHandler("resultTitle")
     public void onClick(ClickEvent clickEvent) {
-        Window.Location.replace(urlPlaceholder.toString());
+        Window.Location.assign(urlPlaceholder.toString());
     }
 
     public void setResult(SearchResult result) {

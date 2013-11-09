@@ -10,6 +10,7 @@ import com.fbratu.relevant.gwt.shared.dto.SearchResult;
 import com.fbratu.relevant.gwt.shared.ImmoLookupService;
 import com.fbratu.relevant.gwt.shared.ImmoLookupServiceAsync;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
@@ -55,8 +56,16 @@ public class Presenter implements ISearchListener, ISearchResultsListener{
     public void start() {
         // register main panel as historical handler
         History.addValueChangeHandler(mainPanel);
-        // display initial panel
-        mainPanel.showInitialPanel();
+        // check if app already running -> using historical token
+        String initToken = History.getToken();
+        if (initToken.length() == 0) {
+            // app initial startup
+            // display initial panel
+            mainPanel.showInitialPanel();
+        } else {
+            // app already running/loaded via bookmark
+            mainPanel.showFromHistory(initToken);
+        }
     }
 
     public void notifySearch(final String searchLocation) {
