@@ -2,7 +2,6 @@ package com.fbratu.relevant.gwt.client;
 
 import com.fbratu.relevant.gwt.client.presenter.Presenter;
 import com.fbratu.relevant.gwt.client.view.main.MainPanel;
-import com.fbratu.relevant.gwt.client.view.search.SearchPanel;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.RootPanel;
 
@@ -17,7 +16,7 @@ public class RelevantImmo implements EntryPoint {
       RootPanel.get().add(mainPanel);
       // init Presenter
       Presenter presenter = new Presenter(mainPanel);
-      mainPanel.registerAsListener(presenter);
+      mainPanel.register(presenter);
       // kickstart!
       presenter.start();
   }

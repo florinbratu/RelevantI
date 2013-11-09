@@ -81,7 +81,8 @@ public class MainPanel extends Composite implements ValueChangeHandler<String> {
         // register listener
         searchResultsPanel.registerListener(presenter);
         // register historical landmark
-        History.newItem(State.SEARCH_RESULTS.toString(), false);
+        History.newItem(State.SEARCH_RESULTS.toString()
+                + State.HISTORY_SEPARATOR + searchLocation, false);
     }
 
     public void showSearchPanel() {
@@ -93,7 +94,7 @@ public class MainPanel extends Composite implements ValueChangeHandler<String> {
         History.newItem(State.SEARCH_PAGE.toString(), false);
     }
 
-    public void registerAsListener(Presenter presenter) {
+    public void register(Presenter presenter) {
          // since it's lazy; we register it when components are shown
         // so just store it for now
         this.presenter = presenter;
@@ -104,14 +105,21 @@ public class MainPanel extends Composite implements ValueChangeHandler<String> {
      */
     @Override
     public void onValueChange(ValueChangeEvent<String> event) {
-        String oldStateName = event.getValue();
+        String historicalInfo = event.getValue();
+        String[] tokens = historicalInfo.split(State.HISTORY_SEPARATOR);
+        String oldStateName = tokens[0];
         State oldState = State.getByName(oldStateName);
         switch (oldState) {
             case SEARCH_PAGE:
                 showSearchPanel();
                 break;
             case SEARCH_RESULTS:
-                showSearchResultsPanel("TODO",new ArrayList<SearchResult>());
+                // location encoded in history token
+                String location = tokens[1];
+                // HACK clear prev search result entries
+                searchResultsPanel.onBack(null);
+                // re-run search query. not optimal but good enough for now
+                presenter.notifySearch(location);
                 break;
         }
     }

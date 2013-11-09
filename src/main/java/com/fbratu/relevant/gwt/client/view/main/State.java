@@ -13,6 +13,8 @@ public enum State {
 
     private final String name;
 
+    public static final String HISTORY_SEPARATOR = ";";
+
     private State(String name) {
         this.name = name;
     }
