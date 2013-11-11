@@ -19,8 +19,12 @@ public class SeLogerLookupService implements ILookupService{
 
     @Override
     public List<SearchResult> searchOffers(SearchCriteria criteria) throws LookupException {
-        // right now is isofunctional with ImmoLookupServiceImpl
         // TODO actually crawl seloger!
+        // right now is isofunctional with ImmoLookupServiceImpl
+        if(criteria == null)
+            throw new LookupException("Missing search criteria!");
+        if(criteria.getLocation() == null)
+            throw new LookupException("Missing search location!");
         // test Error Handling
         if("emmerdeur".equals(criteria.getLocation()))
             throw new LookupException("Thou shall not shit with me!");
