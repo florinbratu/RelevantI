@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="SeLogerLookupService" targetNamespace="http://seloger.ws.relevant.fbratu.com/" xmlns:ns1="http://iface.ws.relevant.fbratu.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://seloger.ws.relevant.fbratu.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:import namespace="http://iface.ws.relevant.fbratu.com/" location="LookupServicePortType.wsdl">
+    </wsdl:import>
+  <wsdl:binding name="SeLogerLookupServiceSoapBinding" type="ns1:LookupServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="searchOffers">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="searchOffers">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchOffersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LookupException">
+        <soap:fault name="LookupException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SeLogerLookupService">
+    <wsdl:port name="SeLogerLookupPort" binding="tns:SeLogerLookupServiceSoapBinding">
+      <soap:address location="http://localhost:9090/SeLogerLookupPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

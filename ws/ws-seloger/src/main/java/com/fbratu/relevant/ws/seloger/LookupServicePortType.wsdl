@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="LookupServicePortType" targetNamespace="http://iface.ws.relevant.fbratu.com/" xmlns:ns1="http://iface.ws.relevant.fbratu.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema xmlns:tns="http://iface.ws.relevant.fbratu.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://iface.ws.relevant.fbratu.com/">
+  <xs:element name="searchOffers" type="tns:searchOffers"/>
+  <xs:element name="searchOffersResponse" type="tns:searchOffersResponse"/>
+  <xs:complexType name="searchOffers">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:searchCriteria"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchCriteria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="location" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchOffersResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:searchResult"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="originalAnnounceLink" type="xs:string"/>
+      <xs:element minOccurs="0" name="title" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LookupException" type="tns:LookupException"/>
+  <xs:complexType name="LookupException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="LookupException">
+    <wsdl:part name="LookupException" element="ns1:LookupException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchOffersResponse">
+    <wsdl:part name="parameters" element="ns1:searchOffersResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchOffers">
+    <wsdl:part name="parameters" element="ns1:searchOffers">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="LookupServicePortType">
+    <wsdl:operation name="searchOffers">
+      <wsdl:input name="searchOffers" message="ns1:searchOffers">
+    </wsdl:input>
+      <wsdl:output name="searchOffersResponse" message="ns1:searchOffersResponse">
+    </wsdl:output>
+      <wsdl:fault name="LookupException" message="ns1:LookupException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
