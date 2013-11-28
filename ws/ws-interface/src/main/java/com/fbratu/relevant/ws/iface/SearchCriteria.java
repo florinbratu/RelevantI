@@ -1,9 +1,11 @@
 package com.fbratu.relevant.ws.iface;
 
+import java.io.Serializable;
+
 /**
  * Author: Florin
  */
-public class SearchCriteria {
+public class SearchCriteria implements Serializable{
 
     private String location;
 

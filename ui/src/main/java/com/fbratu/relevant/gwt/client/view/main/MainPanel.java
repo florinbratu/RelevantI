@@ -3,7 +3,7 @@ package com.fbratu.relevant.gwt.client.view.main;
 import com.fbratu.relevant.gwt.client.presenter.Presenter;
 import com.fbratu.relevant.gwt.client.view.results.SearchResultsPanel;
 import com.fbratu.relevant.gwt.client.view.search.SearchPanel;
-import com.fbratu.relevant.gwt.shared.dto.SearchResult;
+import com.fbratu.relevant.ws.iface.SearchResult;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;

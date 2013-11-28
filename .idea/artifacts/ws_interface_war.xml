@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ws-interface:war">
+    <output-path>$PROJECT_DIR$/ws/ws-interface/target</output-path>
+    <root id="archive" name="ws-interface-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="ws-interface:war exploded" />
+    </root>
+  </artifact>
+</component>

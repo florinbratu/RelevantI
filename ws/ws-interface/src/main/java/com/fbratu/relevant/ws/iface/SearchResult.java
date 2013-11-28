@@ -1,9 +1,11 @@
 package com.fbratu.relevant.ws.iface;
 
+import java.io.Serializable;
+
 /**
  * Author: Florin
  */
-public class SearchResult {
+public class SearchResult implements Serializable{
     private String title;
     private String description;
     private String originalAnnounceLink;

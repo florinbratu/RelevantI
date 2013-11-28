@@ -1,9 +1,14 @@
 package com.fbratu.relevant.gwt.server;
 
-import com.fbratu.relevant.gwt.shared.dto.SearchResult;
 import com.fbratu.relevant.gwt.shared.ImmoLookupService;
+import com.fbratu.relevant.ws.iface.ILookupService;
+import com.fbratu.relevant.ws.iface.LookupException;
+import com.fbratu.relevant.ws.iface.SearchCriteria;
+import com.fbratu.relevant.ws.iface.SearchResult;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +21,21 @@ import java.util.List;
 public class ImmoLookupServiceImpl extends RemoteServiceServlet implements
         ImmoLookupService {
 
-    public List<SearchResult> searchOffers(String location) throws IllegalArgumentException {
+    public List<SearchResult> searchOffers(String location) {
+        WebApplicationContext ac = WebApplicationContextUtils
+                .getWebApplicationContext(this.getServletContext());
+        // reference to the WS client
+        ILookupService webServiceRef = (ILookupService)ac.getBean("seLogerLookupService");
+        try {
+            SearchCriteria searchCriteria = new SearchCriteria();
+            searchCriteria.setLocation(location);
+            return webServiceRef.searchOffers(searchCriteria);
+        } catch (LookupException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<SearchResult> searchOffersOld(String location) throws IllegalArgumentException {
 
         // test Error Handling
         if("emmerdeur".equals(location))

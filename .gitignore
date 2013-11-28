@@ -11,3 +11,5 @@ www-test
 test-classes/
 .idea/workspace.xml
 .idea/tasks.xml
+out
+ws/testClient

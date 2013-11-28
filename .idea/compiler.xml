@@ -12,6 +12,7 @@
       <entry name="!?*.flex" />
       <entry name="!?*.kt" />
       <entry name="!?*.clj" />
+      <entry name="*?.class" />
     </wildcardResourcePatterns>
     <annotationProcessing>
       <profile default="true" name="Default" enabled="false">
@@ -23,10 +24,14 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="RelevantImmo" />
+        <module name="ws-interface" />
+        <module name="ws-seloger" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="RelevantImmo" target="1.6" />
+      <module name="ws-interface" target="1.6" />
+      <module name="ws-seloger" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>

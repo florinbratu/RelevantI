@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ui/RelevantImmo.iml" filepath="$PROJECT_DIR$/ui/RelevantImmo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ws/testClient/testClient.iml" filepath="$PROJECT_DIR$/ws/testClient/testClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ws/ws-interface/ws-interface.iml" filepath="$PROJECT_DIR$/ws/ws-interface/ws-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ws/ws-seloger/ws-seloger.iml" filepath="$PROJECT_DIR$/ws/ws-seloger/ws-seloger.iml" />
     </modules>
   </component>
 </project>

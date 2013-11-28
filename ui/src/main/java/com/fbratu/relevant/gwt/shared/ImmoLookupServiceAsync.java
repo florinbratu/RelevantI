@@ -1,6 +1,6 @@
 package com.fbratu.relevant.gwt.shared;
 
-import com.fbratu.relevant.gwt.shared.dto.SearchResult;
+import com.fbratu.relevant.ws.iface.SearchResult;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import java.util.List;

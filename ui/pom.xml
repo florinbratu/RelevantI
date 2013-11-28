@@ -17,6 +17,7 @@
     <maven.compiler.source>1.6</maven.compiler.source>
     <maven.compiler.target>1.6</maven.compiler.target>
     <springframeworkVersion>3.1.2.RELEASE</springframeworkVersion>
+      <cxfVersion>2.7.7</cxfVersion>
   </properties>
 
   <dependencies>
@@ -90,6 +91,27 @@
           <groupId>log4j</groupId>
           <artifactId>log4j</artifactId>
           <version>1.2.17</version>
+      </dependency>
+      <!-- Web Services -->
+      <dependency>
+          <groupId>ws-interface</groupId>
+          <artifactId>ws-interface</artifactId>
+          <version>1.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.cxf</groupId>
+          <artifactId>cxf-rt-frontend-jaxws</artifactId>
+          <version>${cxfVersion}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.cxf</groupId>
+          <artifactId>cxf-rt-transports-http</artifactId>
+          <version>${cxfVersion}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.cxf</groupId>
+          <artifactId>cxf-rt-transports-http-jetty</artifactId>
+          <version>${cxfVersion}</version>
       </dependency>
   </dependencies>
   

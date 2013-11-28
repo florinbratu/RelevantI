@@ -1,8 +1,8 @@
 package com.fbratu.relevant.gwt.client;
 
-import com.fbratu.relevant.gwt.shared.dto.SearchResult;
 import com.fbratu.relevant.gwt.shared.ImmoLookupService;
 import com.fbratu.relevant.gwt.shared.ImmoLookupServiceAsync;
+import com.fbratu.relevant.ws.iface.SearchResult;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.junit.client.GWTTestCase;
 import com.google.gwt.user.client.rpc.AsyncCallback;
