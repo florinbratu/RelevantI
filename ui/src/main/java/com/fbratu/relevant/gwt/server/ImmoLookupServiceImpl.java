@@ -5,6 +5,8 @@ import com.fbratu.relevant.ws.iface.ILookupService;
 import com.fbratu.relevant.ws.iface.LookupException;
 import com.fbratu.relevant.ws.iface.SearchCriteria;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,11 +20,9 @@ import java.util.List;
 public class ImmoLookupServiceImpl extends RemoteServiceServlet implements
         ImmoLookupService {
 
+    @Autowired
+    @Qualifier("seLogerLookupService")
     private ILookupService webServiceRef;
-
-    public ImmoLookupServiceImpl(ILookupService webServiceRef) {
-        this.webServiceRef = webServiceRef;
-    }
 
     public List<com.fbratu.relevant.gwt.shared.SearchResult>
     searchOffers(String location) {

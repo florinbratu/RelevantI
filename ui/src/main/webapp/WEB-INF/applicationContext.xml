@@ -22,9 +22,9 @@
                   serviceClass="com.fbratu.relevant.ws.iface.ILookupService"
                   address="http://localhost:8080/seloger/SeLogerLookupService" />
 
-    <bean id="immoLookup" class="com.fbratu.relevant.gwt.server.ImmoLookupServiceImpl">
-        <constructor-arg ref="seLogerLookupService"/>
-    </bean>
+    <context:annotation-config/>
+
+    <context:component-scan base-package="com.fbratu.relevant"/>
 
     <!-- later; tx:annotation-driven/ xmlns:tx="http://www.springframework.org/schema/tx"-->
 
