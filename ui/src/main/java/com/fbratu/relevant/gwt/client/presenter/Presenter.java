@@ -8,7 +8,7 @@ import com.fbratu.relevant.gwt.client.view.main.MainPanel;
 import com.fbratu.relevant.gwt.client.view.main.State;
 import com.fbratu.relevant.gwt.shared.ImmoLookupService;
 import com.fbratu.relevant.gwt.shared.ImmoLookupServiceAsync;
-import com.fbratu.relevant.ws.iface.SearchResult;
+import com.fbratu.relevant.gwt.shared.SearchResult;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.user.client.History;

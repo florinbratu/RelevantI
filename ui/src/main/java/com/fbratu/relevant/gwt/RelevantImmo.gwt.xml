@@ -20,8 +20,6 @@
     <inherits name="com.google.gwt.uibinder.UiBinder"/>
 
   <!-- Other module inherits                                      -->
-  <!-- The WS interface                                      -->
-  <inherits name="com.fbratu.relevant.ws.iface.WSInterface"/>
 
   <!-- Specify the app entry point class.                         -->
   <entry-point class='com.fbratu.relevant.gwt.client.RelevantImmo'/>

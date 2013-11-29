@@ -21,7 +21,8 @@ import java.util.List;
 public class ImmoLookupServiceImpl extends RemoteServiceServlet implements
         ImmoLookupService {
 
-    public List<SearchResult> searchOffers(String location) {
+    public List<com.fbratu.relevant.gwt.shared.SearchResult>
+        searchOffers(String location) {
         WebApplicationContext ac = WebApplicationContextUtils
                 .getWebApplicationContext(this.getServletContext());
         // reference to the WS client
@@ -29,7 +30,8 @@ public class ImmoLookupServiceImpl extends RemoteServiceServlet implements
         try {
             SearchCriteria searchCriteria = new SearchCriteria();
             searchCriteria.setLocation(location);
-            return webServiceRef.searchOffers(searchCriteria);
+            return  ServerToClientAdapter.serverToClient(
+                    webServiceRef.searchOffers(searchCriteria));
         } catch (LookupException e) {
             throw new RuntimeException(e);
         }
