@@ -17,7 +17,8 @@
     <maven.compiler.source>1.6</maven.compiler.source>
     <maven.compiler.target>1.6</maven.compiler.target>
     <springframeworkVersion>3.1.2.RELEASE</springframeworkVersion>
-      <cxfVersion>2.7.7</cxfVersion>
+    <cxfVersion>2.7.7</cxfVersion>
+    <hibernateVersion>4.3.0.Final</hibernateVersion>
   </properties>
 
   <dependencies>
@@ -79,6 +80,21 @@
           <artifactId>spring-web</artifactId>
           <version>${springframeworkVersion}</version>
       </dependency>
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-orm</artifactId>
+          <version>${springframeworkVersion}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-tx</artifactId>
+          <version>${springframeworkVersion}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-jdbc</artifactId>
+          <version>${springframeworkVersion}</version>
+      </dependency>
       <!-- </SpringDependencies> -->
       <dependency>
           <groupId>org.spring4gwt</groupId>
@@ -112,6 +128,33 @@
           <groupId>org.apache.cxf</groupId>
           <artifactId>cxf-rt-transports-http-jetty</artifactId>
           <version>${cxfVersion}</version>
+      </dependency>
+      <!-- Hibernate -->
+      <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-core</artifactId>
+          <version>${hibernateVersion}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-entitymanager</artifactId>
+          <version>${hibernateVersion}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.hibernate.javax.persistence</groupId>
+          <artifactId>hibernate-jpa-2.0-api</artifactId>
+          <version>1.0.1.Final</version>
+      </dependency>
+      <!-- Hibernate c3p0 connection pool -->
+      <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-c3p0</artifactId>
+          <version>${hibernateVersion}</version>
+      </dependency>
+      <dependency>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+          <version>5.1.6</version>
       </dependency>
   </dependencies>
   
