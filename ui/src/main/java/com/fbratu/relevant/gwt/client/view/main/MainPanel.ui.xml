@@ -2,16 +2,23 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:gwt='urn:import:com.google.gwt.user.client.ui'
              xmlns:search='urn:import:com.fbratu.relevant.gwt.client.view.search'
-            xmlns:results='urn:import:com.fbratu.relevant.gwt.client.view.results'>
-    <!--ui:style src="SearchPanelStatic.css"/-->
+             xmlns:results='urn:import:com.fbratu.relevant.gwt.client.view.results'
+             xmlns:login='urn:import:com.fbratu.relevant.gwt.client.view.login'>
+
     <ui:with field='res' type='com.fbratu.relevant.gwt.client.Resources'/>
 
-    <gwt:DeckPanel ui:field="mainPanel">
-        <gwt:LazyPanel ui:field="lazySearchPanel">
-            <search:SearchPanel ui:field="searchPanel"/>
-        </gwt:LazyPanel>
-        <gwt:LazyPanel ui:field="lazySearchResultsPanel">
-            <results:SearchResultsPanel ui:field="searchResultsPanel"/>
-        </gwt:LazyPanel>
-    </gwt:DeckPanel>
+    <gwt:VerticalPanel>
+        <!-- Login panel -->
+        <login:LoginPanel ui:field="loginPanel"/>
+
+        <!-- Main search deck -->
+        <gwt:DeckPanel ui:field="mainPanel">
+            <gwt:LazyPanel ui:field="lazySearchPanel">
+                <search:SearchPanel ui:field="searchPanel"/>
+            </gwt:LazyPanel>
+            <gwt:LazyPanel ui:field="lazySearchResultsPanel">
+                <results:SearchResultsPanel ui:field="searchResultsPanel"/>
+            </gwt:LazyPanel>
+        </gwt:DeckPanel>
+    </gwt:VerticalPanel>
 </ui:UiBinder>
