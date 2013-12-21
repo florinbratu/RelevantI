@@ -26,15 +26,20 @@ public class LoginPanel extends Composite{
     @UiField
     Button loginButton;
 
+    // keep a bit separated logic from display. use a Controller class
+    private final LoginContorller controller;
+
     public LoginPanel() {
         uiBinder = GWT.create(LoginUiBinder.class);
         initWidget(uiBinder.createAndBindUi(this));
+        // init controller of this panel(which surprisingly is not the Presenter)
+        controller = new LoginContorller();
     }
 
     @UiHandler("loginButton")
     public void onLogin(ClickEvent event) {
         String username = usernameBox.getValue();
         String password = passwordBox.getValue();
-        Window.alert("Logging in user " + username + " password:" + password);
+        controller.performLogin(username, password);
     }
 }
