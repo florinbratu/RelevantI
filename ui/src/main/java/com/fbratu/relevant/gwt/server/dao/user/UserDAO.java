@@ -26,7 +26,7 @@ public class UserDAO extends JPADAO<Long, User> {
     }
 
     public List<User> findMatchingUsers(String username, String password)  {
-        return getJpaTemplate().find("from Users where UserName = ? and PassWord = ?", username, password);
+        return getJpaTemplate().find("from User where UserName = ? and PassWord = ?", username, password);
     }
 }
 

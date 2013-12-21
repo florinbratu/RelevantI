@@ -3,6 +3,7 @@ package com.fbratu.relevant.gwt.server;
 import com.fbratu.relevant.gwt.server.dao.user.UserDAO;
 import com.fbratu.relevant.gwt.shared.UserManagementService;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,11 +14,8 @@ import org.springframework.stereotype.Service;
 public class UserManagementServiceImpl extends RemoteServiceServlet implements
         UserManagementService {
 
-    private final UserDAO userDAO;
-
-    public UserManagementServiceImpl() {
-           userDAO = new UserDAO();
-    }
+    @Autowired
+    private UserDAO userDAO;
 
     @Override
     public boolean login(String username, String password) {
