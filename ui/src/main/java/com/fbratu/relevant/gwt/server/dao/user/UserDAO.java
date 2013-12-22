@@ -8,25 +8,37 @@ import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceUnit;
+import javax.persistence.Query;
 import java.util.List;
 
 /**
  * Author: Florin
  */
 @Repository("UserDAO")
-public class UserDAO extends JPADAO<Long, User> {
+public class UserDAO {
 
-    @Autowired
-    EntityManagerFactory entityManagerFactory;
+    private EntityManagerFactory entityManagerFactory;
 
-    @PostConstruct
-    public void init() {
-        super.setEntityManagerFactory(entityManagerFactory);
-        super.setJpaTemplate(new JpaTemplate(entityManagerFactory));
+    @PersistenceUnit
+    public void setEntityManagerFactory(EntityManagerFactory emf) {
+        this.entityManagerFactory = emf;
     }
 
     public List<User> findMatchingUsers(String username, String password)  {
-        return getJpaTemplate().find("from User where UserName = ? and PassWord = ?", username, password);
+        EntityManager em = entityManagerFactory.createEntityManager();
+        try {
+            Query query = em.createQuery("from User where userName = ?1 and password = ?2");
+            query.setParameter(1, username);
+            query.setParameter(2, password);
+            return query.getResultList();
+        }
+        finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
 }
 
