@@ -18,7 +18,7 @@
     <maven.compiler.target>1.6</maven.compiler.target>
     <springframeworkVersion>3.1.2.RELEASE</springframeworkVersion>
     <cxfVersion>2.7.7</cxfVersion>
-    <hibernateVersion>4.3.0.Final</hibernateVersion>
+    <hibernateVersion>3.5.6-Final</hibernateVersion>
   </properties>
 
   <dependencies>
@@ -140,16 +140,6 @@
           <artifactId>hibernate-entitymanager</artifactId>
           <version>${hibernateVersion}</version>
       </dependency>
-      <dependency>
-          <groupId>org.hibernate.common</groupId>
-          <artifactId>hibernate-commons-annotations</artifactId>
-          <version>4.0.4.Final</version>
-      </dependency>
-      <dependency>
-          <groupId>javax.persistence</groupId>
-          <artifactId>persistence-api</artifactId>
-          <version>1.0-rev-1</version>
-      </dependency>
       <!-- Hibernate c3p0 connection pool -->
       <dependency>
           <groupId>org.hibernate</groupId>
@@ -160,6 +150,12 @@
           <groupId>mysql</groupId>
           <artifactId>mysql-connector-java</artifactId>
           <version>5.1.6</version>
+      </dependency>
+      <!-- logging -->
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-log4j12</artifactId>
+          <version>1.7.5</version>
       </dependency>
   </dependencies>
   

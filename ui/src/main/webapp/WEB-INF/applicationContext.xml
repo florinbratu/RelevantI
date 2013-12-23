@@ -26,19 +26,20 @@
     <context:annotation-config/>
 
     <!-- DB -->
-    <bean class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean" id="entityManagerFactory">
-        <property name="persistenceUnitName" value="RelevantIPersistenceUnit"/>
-    </bean>
-
     <bean id="sessionFactory"
-          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+          class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="com.fbratu.relevant.gwt.shared.dto"/>
+        <property name="mappingResources">
+            <list>
+                <value>com/fbratu/relevant/gwt/shared/dto/user/user.hbm.xml</value>
+            </list>
+        </property>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.current_session_context_class">thread</prop>
             </props>
         </property>
     </bean>
@@ -51,12 +52,8 @@
         <property name="password" value="taticku" />
     </bean>
 
-    <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
-        <property name="entityManagerFactory" ref="entityManagerFactory"/>
-    </bean>
-
-    <bean id="UserDAO" class="com.fbratu.relevant.gwt.server.dao.user.UserDAO">
-        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    <bean id="userBean" class="com.fbratu.relevant.gwt.server.dao.user.UserDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
 </beans>

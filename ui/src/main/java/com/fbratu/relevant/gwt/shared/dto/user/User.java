@@ -1,23 +1,14 @@
 package com.fbratu.relevant.gwt.shared.dto.user;
 
-import javax.persistence.*;
-
 /**
  * Author: Florin
  */
-@Entity
-@Table(name="Users")
 public class User {
 
-    @Id
-    @GeneratedValue
-    @Column(name="Id")
     private long id;
 
-    @Column(name="UserName")
     private String userName;
 
-    @Column(name="PassWord")
     private String password;
 
     public User() {

@@ -1,44 +1,33 @@
 package com.fbratu.relevant.gwt.server.dao.user;
 
-import com.fbratu.relevant.gwt.server.dao.JPADAO;
 import com.fbratu.relevant.gwt.shared.dto.user.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.jpa.JpaTemplate;
-import org.springframework.stereotype.Repository;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
-import javax.annotation.PostConstruct;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceUnit;
-import javax.persistence.Query;
 import java.util.List;
 
 /**
  * Author: Florin
  */
-@Repository("UserDAO")
 public class UserDAO {
 
-    private EntityManagerFactory entityManagerFactory;
+    private SessionFactory sessionFactory;
 
-    @PersistenceUnit
-    public void setEntityManagerFactory(EntityManagerFactory emf) {
-        this.entityManagerFactory = emf;
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 
     public List<User> findMatchingUsers(String username, String password)  {
-        EntityManager em = entityManagerFactory.createEntityManager();
-        try {
-            Query query = em.createQuery("from User where userName = ?1 and password = ?2");
-            query.setParameter(1, username);
-            query.setParameter(2, password);
-            return query.getResultList();
-        }
-        finally {
-            if (em != null) {
-                em.close();
-            }
-        }
+        Session session = sessionFactory.getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("from User where UserName = :user and Password = :pwd");
+        query.setParameter("user", username);
+        query.setParameter("pwd", password);
+        List<User> results= query.list();
+        tx.commit();
+        return results;
     }
 }
 
