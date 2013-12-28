@@ -44,23 +44,23 @@ public class UMPanel extends Composite {
     public UMPanel() {
         uiBinder = GWT.create(UserManagementUiBinder.class);
         initWidget(uiBinder.createAndBindUi(this));
+        // HACK init Presenter here
+        this.presenter = new UMPresenter(this);
         // initial page is login page
         showLoginPage();
-        // HACK init Presenter here
-        register(new UMPresenter(this));
     }
 
     public void showLoginPage() {
         userManagementPanel.showWidget(LOGIN_PANEL_WIDGET_ID);
+        loginPanel.register(presenter);
+        // clear any previously-filled info
+        loginPanel.clearFields();
     }
 
     public void showSignedUserPage(String username) {
         userManagementPanel.showWidget(SIGNED_USER_PANEL_WIDGET_ID);
         signedInPanel.setUsername(username);
+        signedInPanel.register(presenter);
     }
 
-    public void register(UMPresenter presenter) {
-        this.presenter = presenter;
-        loginPanel.register(presenter);
-    }
 }

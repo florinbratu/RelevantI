@@ -2,6 +2,7 @@ package com.fbratu.relevant.gwt.client.view.um;
 
 import com.fbratu.relevant.gwt.client.view.ErrorView;
 import com.fbratu.relevant.gwt.client.view.um.login.LoginController;
+import com.fbratu.relevant.gwt.client.view.um.signedUser.SignedInController;
 import com.fbratu.relevant.gwt.shared.UserManagementService;
 import com.fbratu.relevant.gwt.shared.UserManagementServiceAsync;
 import com.google.gwt.core.client.GWT;
@@ -11,7 +12,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 /**
  * Author: Florin
  */
-public class UMPresenter implements LoginController{
+public class UMPresenter implements LoginController, SignedInController{
 
     // the adjaced View
     private final UMPanel view;
@@ -47,5 +48,11 @@ public class UMPresenter implements LoginController{
                 }
             }
         });
+    }
+
+    @Override
+    public void logout() {
+        // back to login page
+        view.showLoginPage();
     }
 }

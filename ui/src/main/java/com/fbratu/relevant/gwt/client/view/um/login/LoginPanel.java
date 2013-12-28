@@ -55,4 +55,9 @@ public class LoginPanel extends Composite{
             triggerLogin();
         }
     }
+
+    public void clearFields() {
+        this.usernameBox.setText("");
+        this.passwordBox.setText("");
+    }
 }
