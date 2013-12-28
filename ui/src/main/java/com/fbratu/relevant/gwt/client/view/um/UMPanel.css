@@ -1,0 +1,18 @@
+.topRight {
+    /* fixed within viewport */
+    position: fixed;
+
+    /* set position */
+    top: 0px;
+    right: 0px;
+}
+
+.background {
+    background-color: #F8F8F8;
+    border: 1px none transparent;
+    color: #000000;
+    font-size: 11px;
+    margin-left: -8px;
+    margin-top: 5px;
+    padding: 6px;
+}

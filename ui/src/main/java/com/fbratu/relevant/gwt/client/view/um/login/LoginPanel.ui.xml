@@ -2,8 +2,7 @@
              xmlns:gwt='urn:import:com.google.gwt.user.client.ui'>
     <ui:style src="LoginPanel.css"/>
     <gwt:HTMLPanel>
-        <div class="{style.topRight}">
-            <gwt:HorizontalPanel addStyleNames="{style.background}">
+            <gwt:HorizontalPanel>
                 <gwt:Label text="Login" addStyleNames="{style.labelText}" />
                 <gwt:TextBox ui:field="usernameBox" addStyleNames="{style.box}" />
                 <gwt:Label text="Password" addStyleNames="{style.labelText}" />
@@ -12,6 +11,5 @@
                 <gwt:Button ui:field="loginButton" text="Submit"
                            addStyleNames="{style.loginButton}" />
             </gwt:HorizontalPanel>
-        </div>
     </gwt:HTMLPanel>
 </ui:UiBinder>
