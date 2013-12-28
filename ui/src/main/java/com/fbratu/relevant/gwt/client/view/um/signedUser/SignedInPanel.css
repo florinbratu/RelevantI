@@ -1,0 +1,35 @@
+.background {
+    background-color: #F8F8F8;
+    border: 1px none transparent;
+    color: #000000;
+    font-size: 11px;
+    margin-left: -8px;
+    margin-top: 5px;
+    padding: 6px;
+}
+
+.salutationText {
+    font-family: Arial, Sans-serif;
+    color: #000000;
+    font-size: 11px;
+    text-align: left;
+}
+
+.usernameText {
+    font-family: "Times New Roman",Times,serif;
+    color: indianred;
+    font-size: 14px;
+    text-align: left;
+    margin: 0 10px;
+}
+
+.logoutText {
+    text-decoration: underline;
+    color: blue;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+    font-family: Arial, Sans-serif;
+    font-size: 11px;
+    text-align: left;
+}

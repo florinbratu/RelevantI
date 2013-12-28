@@ -1,7 +1,7 @@
 package com.fbratu.relevant.gwt.client.view.um;
 
 import com.fbratu.relevant.gwt.client.view.um.login.LoginPanel;
-import com.fbratu.relevant.gwt.client.view.um.signedUser.UserPanel;
+import com.fbratu.relevant.gwt.client.view.um.signedUser.SignedInPanel;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -32,7 +32,7 @@ public class UMPanel extends Composite {
     private static final int LOGIN_PANEL_WIDGET_ID = 0;
 
     @UiField
-    UserPanel signedUserPanel;
+    SignedInPanel signedInPanel;
 
     @UiField
     LazyPanel lazySignedUserPanel;
@@ -54,8 +54,9 @@ public class UMPanel extends Composite {
         userManagementPanel.showWidget(LOGIN_PANEL_WIDGET_ID);
     }
 
-    public void showSignedUserPage() {
+    public void showSignedUserPage(String username) {
         userManagementPanel.showWidget(SIGNED_USER_PANEL_WIDGET_ID);
+        signedInPanel.setUsername(username);
     }
 
     public void register(UMPresenter presenter) {

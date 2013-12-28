@@ -8,7 +8,7 @@
             <login:LoginPanel ui:field="loginPanel"/>
         </gwt:LazyPanel>
         <gwt:LazyPanel ui:field="lazySignedUserPanel">
-            <signed:UserPanel ui:field="signedUserPanel"/>
+            <signed:SignedInPanel ui:field="signedInPanel"/>
         </gwt:LazyPanel>
         <!-- TODO
         <gwt:LazyPanel ui:field="lazySignUpPanel">

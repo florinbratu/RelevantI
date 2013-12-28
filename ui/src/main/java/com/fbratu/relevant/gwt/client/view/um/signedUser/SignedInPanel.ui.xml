@@ -1,0 +1,11 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:gwt='urn:import:com.google.gwt.user.client.ui'>
+    <ui:style src="SignedInPanel.css"/>
+    <gwt:HTMLPanel>
+        <gwt:HorizontalPanel addStyleNames="{style.background}">
+            <gwt:Label text="Welcome" addStyleNames="{style.salutationText}" />
+            <gwt:Label ui:field="usernameLabel" addStyleNames="{style.usernameText}" />
+            <gwt:Label text="Logout" ui:field="logoutLink" addStyleNames="{style.logoutText}" />
+        </gwt:HorizontalPanel>
+    </gwt:HTMLPanel>
+</ui:UiBinder>

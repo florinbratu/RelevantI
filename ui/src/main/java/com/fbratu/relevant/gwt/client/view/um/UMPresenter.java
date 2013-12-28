@@ -29,7 +29,7 @@ public class UMPresenter implements LoginController{
         this.errorView = new ErrorView();
     }
 
-    public void performLogin(String username, String password) {
+    public void performLogin(final String username, final String password) {
         userManagementService.login(username, password, new AsyncCallback<Boolean>() {
             @Override
             public void onFailure(Throwable caught) {
@@ -39,8 +39,7 @@ public class UMPresenter implements LoginController{
             @Override
             public void onSuccess(Boolean result) {
                 if(result) {
-                    // TODO show signed page
-                    Window.alert("Login succesful!");
+                    view.showSignedUserPage(username);
                 }
                 else {
                     // TODO show in login panel
