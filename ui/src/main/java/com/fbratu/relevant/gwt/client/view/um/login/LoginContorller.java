@@ -1,4 +1,4 @@
-package com.fbratu.relevant.gwt.client.view.login;
+package com.fbratu.relevant.gwt.client.view.um.login;
 
 import com.fbratu.relevant.gwt.shared.UserManagementService;
 import com.fbratu.relevant.gwt.shared.UserManagementServiceAsync;

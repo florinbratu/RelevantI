@@ -1,4 +1,4 @@
-package com.fbratu.relevant.gwt.client.view.login;
+package com.fbratu.relevant.gwt.client.view.um.login;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;

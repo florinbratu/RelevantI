@@ -1,7 +1,7 @@
 package com.fbratu.relevant.gwt.client.view.main;
 
 import com.fbratu.relevant.gwt.client.presenter.Presenter;
-import com.fbratu.relevant.gwt.client.view.login.LoginPanel;
+import com.fbratu.relevant.gwt.client.view.um.UMPanel;
 import com.fbratu.relevant.gwt.client.view.results.SearchResultsPanel;
 import com.fbratu.relevant.gwt.client.view.search.SearchPanel;
 import com.fbratu.relevant.gwt.shared.SearchResult;
@@ -16,7 +16,6 @@ import com.google.gwt.user.client.ui.DeckPanel;
 import com.google.gwt.user.client.ui.LazyPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -58,11 +57,11 @@ public class MainPanel extends Composite implements ValueChangeHandler<String> {
     @UiField
     LazyPanel lazySearchResultsPanel;
 
+    private static final int SEARCH_RESULTS_PANEL_WIDGET_ID = 1;
+
     // Login panel. Handles its own internal view state
     @UiField
-    LoginPanel loginPanel;
-
-    private static final int SEARCH_RESULTS_PANEL_WIDGET_ID = 1;
+    UMPanel userManagementPanel;
 
     private Presenter presenter;
 

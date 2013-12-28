@@ -3,13 +3,13 @@
              xmlns:gwt='urn:import:com.google.gwt.user.client.ui'
              xmlns:search='urn:import:com.fbratu.relevant.gwt.client.view.search'
              xmlns:results='urn:import:com.fbratu.relevant.gwt.client.view.results'
-             xmlns:login='urn:import:com.fbratu.relevant.gwt.client.view.login'>
+             xmlns:um='urn:import:com.fbratu.relevant.gwt.client.view.um'>
 
     <ui:with field='res' type='com.fbratu.relevant.gwt.client.Resources'/>
 
     <gwt:VerticalPanel>
         <!-- Login panel -->
-        <login:LoginPanel ui:field="loginPanel"/>
+        <um:UMPanel ui:field="userManagementPanel"/>
 
         <!-- Main search deck -->
         <gwt:DeckPanel ui:field="mainPanel">

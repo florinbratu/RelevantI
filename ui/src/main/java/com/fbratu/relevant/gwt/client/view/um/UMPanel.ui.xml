@@ -1,0 +1,19 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:gwt='urn:import:com.google.gwt.user.client.ui'
+             xmlns:signed='urn:import:com.fbratu.relevant.gwt.client.view.um.signedUser'
+             xmlns:login='urn:import:com.fbratu.relevant.gwt.client.view.um.login'>
+    <gwt:DeckPanel ui:field="userManagementPanel">
+        <gwt:LazyPanel ui:field="lazyLoginPanel">
+            <login:LoginPanel ui:field="loginPanel"/>
+        </gwt:LazyPanel>
+        <gwt:LazyPanel ui:field="lazySignedUserPanel">
+            <signed:UserPanel ui:field="signedUserPanel"/>
+        </gwt:LazyPanel>
+        <!-- TODO
+        <gwt:LazyPanel ui:field="lazySignUpPanel">
+            <results:SearchResultsPanel ui:field="signUpPanel"/>
+        </gwt:LazyPanel>
+        -->
+    </gwt:DeckPanel>
+</ui:UiBinder>
