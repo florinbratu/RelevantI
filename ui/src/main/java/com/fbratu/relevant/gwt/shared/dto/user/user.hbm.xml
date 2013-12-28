@@ -12,4 +12,8 @@
         <property name="password" column="PassWord"/>
     </class>
 
+    <query name="findUsers">
+        <![CDATA[from User where userName = :user and password = :pwd]]>
+    </query>
+
 </hibernate-mapping>

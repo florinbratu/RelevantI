@@ -22,7 +22,7 @@ public class UserDAO {
     public List<User> findMatchingUsers(String username, String password)  {
         Session session = sessionFactory.getCurrentSession();
         Transaction tx = session.beginTransaction();
-        Query query = session.createQuery("from User where UserName = :user and Password = :pwd");
+        Query query = session.getNamedQuery("findUsers");
         query.setParameter("user", username);
         query.setParameter("pwd", password);
         List<User> results= query.list();
