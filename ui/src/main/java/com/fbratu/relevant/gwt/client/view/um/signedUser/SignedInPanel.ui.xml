@@ -3,9 +3,15 @@
     <ui:style src="SignedInPanel.css"/>
     <gwt:HTMLPanel>
         <gwt:HorizontalPanel>
-            <gwt:Label text="Welcome" addStyleNames="{style.salutationText}" />
-            <gwt:Label ui:field="usernameLabel" addStyleNames="{style.usernameText}" />
-            <gwt:Label text="Logout" ui:field="logoutLink" addStyleNames="{style.logoutText}" />
+            <gwt:cell verticalAlignment="ALIGN_MIDDLE">
+                <gwt:Label text="Welcome" addStyleNames="{style.salutationText}" />
+            </gwt:cell>
+            <gwt:cell verticalAlignment="ALIGN_MIDDLE">
+                <gwt:Label ui:field="usernameLabel" addStyleNames="{style.usernameText}" />
+            </gwt:cell>
+            <gwt:cell verticalAlignment="ALIGN_MIDDLE">
+                <gwt:Label text="Logout" ui:field="logoutLink" addStyleNames="{style.logoutText}" />
+            </gwt:cell>
         </gwt:HorizontalPanel>
     </gwt:HTMLPanel>
 </ui:UiBinder>

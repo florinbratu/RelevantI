@@ -3,9 +3,13 @@
     <ui:style src="LoginPanel.css"/>
     <gwt:HTMLPanel>
             <gwt:HorizontalPanel>
-                <gwt:Label text="Login" addStyleNames="{style.labelText}" />
+                <gwt:cell verticalAlignment="ALIGN_MIDDLE">
+                    <gwt:Label text="Login" addStyleNames="{style.labelText}" />
+                </gwt:cell>
                 <gwt:TextBox ui:field="usernameBox" addStyleNames="{style.box}" />
-                <gwt:Label text="Password" addStyleNames="{style.labelText}" />
+                <gwt:cell verticalAlignment="ALIGN_MIDDLE">
+                    <gwt:Label text="Password" addStyleNames="{style.labelText}" />
+                </gwt:cell>
                 <gwt:PasswordTextBox ui:field="passwordBox"
                                      addStyleNames="{style.box}" />
                 <gwt:Button ui:field="loginButton" text="Submit"
