@@ -1,5 +1,6 @@
-package com.fbratu.relevant.gwt.client.view.um.login;
+package com.fbratu.relevant.gwt.client.view.um;
 
+import com.fbratu.relevant.gwt.client.view.um.login.LoginController;
 import com.fbratu.relevant.gwt.shared.UserManagementService;
 import com.fbratu.relevant.gwt.shared.UserManagementServiceAsync;
 import com.google.gwt.core.client.GWT;
@@ -9,17 +10,20 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 /**
  * Author: Florin
  */
-public class LoginContorller {
+public class UMPresenter implements LoginController{
+
+    // the adjaced View
+    private final UMPanel view;
 
     private final UserManagementServiceAsync userManagementService;
 
-    public LoginContorller() {
+    public UMPresenter(UMPanel view) {
         // init server side proxy
         userManagementService = GWT.create(UserManagementService.class);
+        this.view = view;
     }
 
     public void performLogin(String username, String password) {
-        // TODO architecture this shit! listeners!
         userManagementService.login(username, password, new AsyncCallback<Boolean>() {
             @Override
             public void onFailure(Throwable caught) {

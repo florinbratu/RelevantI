@@ -18,6 +18,8 @@ public class LoginPanel extends Composite{
 
     private LoginUiBinder uiBinder;
 
+    private LoginController controller;
+
     @UiField
     TextBox usernameBox;
 
@@ -27,14 +29,13 @@ public class LoginPanel extends Composite{
     @UiField
     Button loginButton;
 
-    // keep a bit separated logic from display. use a Controller class
-    private final LoginContorller controller;
-
     public LoginPanel() {
         uiBinder = GWT.create(LoginUiBinder.class);
         initWidget(uiBinder.createAndBindUi(this));
-        // init controller of this panel(which surprisingly is not the Presenter)
-        controller = new LoginContorller();
+    }
+
+    public void register(LoginController controller) {
+        this.controller = controller;
     }
 
     @UiHandler("loginButton")

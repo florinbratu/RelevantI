@@ -37,6 +37,8 @@ public class UMPanel extends Composite {
     @UiField
     LazyPanel lazySignedUserPanel;
 
+    private UMPresenter presenter;
+
     private static final int SIGNED_USER_PANEL_WIDGET_ID = 1;
 
     public UMPanel() {
@@ -44,6 +46,8 @@ public class UMPanel extends Composite {
         initWidget(uiBinder.createAndBindUi(this));
         // initial page is login page
         showLoginPage();
+        // HACK init Presenter here
+        register(new UMPresenter(this));
     }
 
     public void showLoginPage() {
@@ -52,5 +56,10 @@ public class UMPanel extends Composite {
 
     public void showSignedUserPage() {
         userManagementPanel.showWidget(SIGNED_USER_PANEL_WIDGET_ID);
+    }
+
+    public void register(UMPresenter presenter) {
+        this.presenter = presenter;
+        loginPanel.register(presenter);
     }
 }
