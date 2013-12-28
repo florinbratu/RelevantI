@@ -4,7 +4,7 @@
              xmlns:signed='urn:import:com.fbratu.relevant.gwt.client.view.um.signedUser'
              xmlns:login='urn:import:com.fbratu.relevant.gwt.client.view.um.login'>
     <ui:style src="UMPanel.css"/>
-    <gwt:DeckPanel ui:field="userManagementPanel" addStyleNames="{style.topRight} {style.background}">
+    <gwt:DeckPanel ui:field="userManagementPanel" addStyleNames="{style.background}">
         <gwt:LazyPanel ui:field="lazyLoginPanel">
             <login:LoginPanel ui:field="loginPanel"/>
         </gwt:LazyPanel>

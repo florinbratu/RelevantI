@@ -5,14 +5,14 @@
              xmlns:results='urn:import:com.fbratu.relevant.gwt.client.view.results'
              xmlns:um='urn:import:com.fbratu.relevant.gwt.client.view.um'>
 
-    <ui:with field='res' type='com.fbratu.relevant.gwt.client.Resources'/>
+    <ui:style src="MainPanel.css"/>
 
     <gwt:VerticalPanel>
         <!-- Login panel -->
-        <um:UMPanel ui:field="userManagementPanel"/>
+        <um:UMPanel ui:field="userManagementPanel" addStyleNames="{style.right}"/>
 
         <!-- Main search deck -->
-        <gwt:DeckPanel ui:field="mainPanel">
+        <gwt:DeckPanel ui:field="mainPanel" addStyleNames="{style.center}">
             <gwt:LazyPanel ui:field="lazySearchPanel">
                 <search:SearchPanel ui:field="searchPanel"/>
             </gwt:LazyPanel>

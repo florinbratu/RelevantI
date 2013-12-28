@@ -1,0 +1,13 @@
+.center
+{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.right
+{
+    position:absolute;
+    /* set position */
+    top: 0px;
+    right: 0px;
+}
