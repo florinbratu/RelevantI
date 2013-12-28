@@ -2,10 +2,11 @@ package com.fbratu.relevant.gwt.client.view.login;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.KeyCodes;
+import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 
 /**
@@ -38,8 +39,19 @@ public class LoginPanel extends Composite{
 
     @UiHandler("loginButton")
     public void onLogin(ClickEvent event) {
+        triggerLogin();
+    }
+
+    private void triggerLogin() {
         String username = usernameBox.getValue();
         String password = passwordBox.getValue();
         controller.performLogin(username, password);
+    }
+
+    @UiHandler(value={"usernameBox", "passwordBox"})
+    public void onKeyUp(KeyUpEvent event) {
+        if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+            triggerLogin();
+        }
     }
 }
